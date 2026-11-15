@@ -12,8 +12,8 @@ Cama configurada: 220 mm. Las medidas son X x Y x Z en la orientación de impres
 | 01_kit_running | `soporte_silla_trasero_B_tapa.stl` | 2 | PETG/ASA 60% | 120 x 50 x 22 | OK |
 | 01_kit_running | `soporte_silla_delantero_A.stl` | 2 | PETG/ASA 100% | 100 x 50 x 52 | OK |
 | 01_kit_running | `soporte_silla_delantero_B_tapa.stl` | 2 | PETG/ASA 60% | 100 x 50 x 22 | OK |
-| 01_kit_running | `bloque_horquilla_trasera.stl` | 2 | PETG/ASA 100% | 89 x 86 x 80 | OK |
-| 01_kit_running | `bloque_horquilla_delantera.stl` | 1 | PETG/ASA 100% | 93 x 83 x 80 | OK |
+| 01_kit_running | `bloque_horquilla_trasera.stl` | 2 | PETG/ASA 100% | 79 x 96 x 80 | OK |
+| 01_kit_running | `bloque_horquilla_delantera.stl` | 1 | PETG/ASA 100% | 97 x 77 x 80 | OK |
 | 01_kit_running | `tapon_tubo_cuadrado.stl` | 4 | TPU/PETG | 23 x 23 x 15 | OK |
 | 02_patineta | `baldosa_tabla_del_izq.stl` | 1 | PETG 40% giroide | 200 x 150 x 22 | OK |
 | 02_patineta | `baldosa_tabla_del_der.stl` | 1 | PETG 40% giroide | 200 x 150 x 22 | OK |
@@ -22,8 +22,8 @@ Cama configurada: 220 mm. Las medidas son X x Y x Z en la orientación de impres
 | 02_patineta | `horquilla_ruedita.stl` | 2 | PETG 100% | 40 x 60 x 67 | OK |
 | 02_patineta | `placa_pivote.stl` | 1 | PETG 100% | 130 x 70 x 10 | OK |
 | 02_patineta | `bloque_giratorio.stl` | 1 | PETG 100% | 52 x 52 x 51 | OK |
-| 02_patineta | `yugo_brazos.stl` | 1 | PETG 100% | 87 x 77 x 29 | OK |
-| 02_patineta | `terminal_brazo.stl` | 2 | PETG 100% | 75 x 29 x 44 | OK |
+| 02_patineta | `yugo_brazos.stl` | 1 | PETG 100% | 88 x 72 x 29 | OK |
+| 02_patineta | `terminal_brazo.stl` | 2 | PETG 100% | 76 x 29 x 42 | OK |
 | 02_patineta | `abrazadera_pivote_pata_A.stl` | 2 | PETG/ASA 100% | 80 x 50 x 59 | OK |
 | 02_patineta | `abrazadera_pivote_pata_B_tapa.stl` | 2 | PETG/ASA 60% | 80 x 50 x 22 | OK |
 | 02_patineta | `placa_central_asiento.stl` | 1 | PETG 100% | 140 x 140 x 78 | OK |

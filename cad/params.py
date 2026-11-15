@@ -29,7 +29,7 @@ PATA_TRASERA_RADIO = 8.0    # [MEDIR] radio de las esquinas del óvalo
 PATA_DELANTERA_ANCHO = 22.0  # [MEDIR]
 PATA_DELANTERA_FONDO = 30.0  # [MEDIR]
 PATA_DELANTERA_RADIO = 8.0   # [MEDIR]
-PATA_DELANTERA_ANGULO = 39.0 # [MEDIR] inclinación de la pata delantera respecto a la vertical (grados)
+PATA_DELANTERA_ANGULO = 36.0 # [MEDIR] inclinación del tubo manillar->rueda delantera respecto a la vertical (fotos: ~36°)
 
 MANILLAR_DIAM = 28.0         # [MEDIR] diámetro del manillar CON la espuma
 TUBO_LATERAL_MANILLAR_DIAM = 26.0  # [MEDIR] tubos laterales del manillar (anclaje hamaca)
@@ -42,15 +42,21 @@ RUEDA_DELANTERA_ORIG = 180.0 # diámetro rueda delantera original (ficha: 18 cm)
 # bicicleta (1 mm) que da agarre y protege la pintura del coche
 HOLGURA_GOMA = 1.0
 
-# Geometría lateral del coche (estimada de la ficha: largo 855, alto 1035).
+# Geometría lateral del coche, calibrada con las fotos del Leona 2 (escala por alto 1035 mm).
 # Origen = centro de la rueda delantera original, X hacia ATRÁS, Z hacia arriba.
-# [MEDIR] con el coche armado sobre el suelo y una huincha.
-EJE_TRASERO_ORIG_X = 560.0   # distancia horizontal centro rueda delantera -> centro rueda trasera
-PATA_TRASERA_ANGULO = 29.0   # [MEDIR] inclinación pata trasera respecto a la vertical (grados)
-PATA_TRASERA_TOPE_Z = 150.0  # [MEDIR] altura de la parte superior de la carcasa de la rueda trasera
-PATA_DELANTERA_TOPE_Z = 225.0  # [MEDIR] altura de la parte superior del giratorio de la rueda delantera
-MANILLAR_X = 750.0
-MANILLAR_Z = 1010.0
+# El chasis es una "X": un tubo recto va del manillar a la rueda delantera; la pata trasera
+# baja desde el buje del asiento hasta el conjunto trasero (ruedas juntas con resortes y freno central).
+EJE_TRASERO_ORIG_X = 460.0   # [MEDIR] distancia entre ejes original (fotos: ~46 cm)
+PATA_TRASERA_ANGULO = 39.0   # [MEDIR] inclinación de la pata trasera respecto a la vertical
+PATA_TRASERA_BASE_X = 400.0  # [MEDIR] extremo inferior de la pata trasera (donde empieza el conjunto trasero)
+PATA_TRASERA_TOPE_Z = 190.0  # [MEDIR] altura de ese extremo inferior
+PATA_DELANTERA_TOPE_Z = 185.0  # [MEDIR] altura de la parte superior del giratorio de la rueda delantera
+PATA_SEPARACION = 420.0      # [MEDIR] distancia entre centros de las 2 patas traseras (y delanteras)
+RUEDAS_TRASERAS_ORIG_Y = 130.0  # [MEDIR] distancia del centro del coche al centro de cada rueda trasera original
+RUEDAS_DELANTERAS_ORIG_Y = 180.0  # [MEDIR] ídem ruedas delanteras
+MANILLAR_X = 765.0
+MANILLAR_Z = 1015.0
+MANILLAR_BOTON_ANCHO = 190.0  # [MEDIR] ancho de la caja del botón de plegado al centro del manillar
 
 # ---------------------------------------------------------------------------
 # KIT RUNNING (3 ruedas)
@@ -61,9 +67,9 @@ RUEDA_RUNNING_DIAM = 300.0   # [MEDIR rueda] diámetro exterior EVA 12" (≈ 29�
 RUEDA_RUNNING_ANCHO = 55.0   # [MEDIR rueda] ancho del neumático EVA
 EJE_RUEDA = 10.0             # [MEDIR rueda] eje roscado de la rueda (M10 típico; si es M8 pon 8)
 BUJE_ANCHO = 80.0            # [MEDIR rueda] ancho del buje entre las caras donde apoyan las tuercas
-ELEVACION = 46.0             # cuánto sube el coche en modo trote (las ruedas originales quedan en el aire)
-EJE_TRASERO_ATRAS = 135.0    # el eje trasero nuevo va detrás del eje original
-RUEDA_ORIG_EXTERIOR = 285.0  # [MEDIR] distancia del centro del coche a la cara EXTERIOR de la rueda trasera original
+ELEVACION = 52.0             # cuánto sube el coche en modo trote (las ruedas originales quedan en el aire)
+EJE_TRASERO_ATRAS = 40.0     # el eje trasero nuevo va un poco detrás del original (las ruedas originales
+                             # van juntas al centro, así que las nuevas pasan por fuera sin chocar)
 
 # Enganche rápido ("enclachar"): pasadores de bola con botón (quick release pin)
 PASADOR_D = 6.0              # kit trote: pasador de bola Ø6 x 40 mm (4 unidades)
@@ -72,7 +78,7 @@ PASADOR_PATINETA_D = 8.0     # patineta: pasador de bola Ø8 x 50 mm (2 unidades
 TUBO_CUADRADO = 20.0         # travesaños delantero y trasero: tubo cuadrado 20x20x2
 PLETINA_ANCHO = 30.0         # horquilla: pletina de acero 30x5
 PLETINA_ESPESOR = 5.0
-TRAVESANO_ALTURA = 335.0     # altura del travesaño delantero sobre el suelo, ya convertido
+TRAVESANO_ALTURA = 300.0     # altura del travesaño delantero sobre el suelo, ya convertido
                              # (debe quedar SOBRE la horquilla giratoria de la rueda original)
 RUEDA_DELANTERA_ADELANTE = 230.0  # cuánto adelanta el eje delantero respecto al travesaño
 

@@ -150,7 +150,7 @@ def board_leg_pivot():
     return a, b
 
 
-ARM_ADELANTE = 240.0   # distancia horizontal pivote-pata -> yugo
+ARM_ADELANTE = 310.0   # la tabla debe quedar detrás de las ruedas traseras originales   # distancia horizontal pivote-pata -> yugo
 ARM_CAIDA = 145.0      # diferencia de altura pivote-pata -> pivote yugo
 
 
@@ -434,6 +434,9 @@ def tray_bar_clamp():
 # ---------------------------------------------------------------------------
 # BANDEJA
 # ---------------------------------------------------------------------------
+TRAY_CLAMP_X = 115.0   # abrazaderas a ±115 mm: libres de la caja del botón de plegado
+
+
 def tray_dims():
     w = P.TABLET_ANCHO + 10
     d = P.TABLET_FONDO + 30
@@ -459,7 +462,7 @@ def tray_half(side):
     for y in (-d / 2 + 35, 0, d / 2 - 35):
         t = t - cyl_x(40, M[4][0] / 2).translate((0, y, -8))
     # agujeros de las abrazaderas del manillar y de los portavasos
-    for x in (-90, 90):
+    for x in (-TRAY_CLAMP_X, TRAY_CLAMP_X):
         for y in (-d / 2 + 18, -d / 2 + 48):
             t = t - cyl(50, M[5][0] / 2, center=True).translate((x, y, 0))
             t = t - cyl(3, M[5][3] / 2 + 0.3).translate((x, y, base_t - 2.5))

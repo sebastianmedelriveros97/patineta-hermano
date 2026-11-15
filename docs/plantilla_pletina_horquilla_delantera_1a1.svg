@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="325mm" height="90.0mm" viewBox="-10 -40 325 90.0">
-<rect x="-10" y="-40" width="325" height="90.0" fill="white"/>
-<rect x="0" y="0" width="305.2" height="30.0" fill="none" stroke="black" stroke-width="0.3"/>
-<line x1="0" y1="15.0" x2="305.2" y2="15.0" stroke="gray" stroke-width="0.15" stroke-dasharray="2,2"/>
-<circle cx="18.0" cy="15.0" r="3.25" fill="none" stroke="red" stroke-width="0.3"/><line x1="15.0" y1="15.0" x2="21.0" y2="15.0" stroke="red" stroke-width="0.15"/><text x="18.0" y="36.0" font-size="3.5" text-anchor="middle" font-family="sans-serif">18</text><circle cx="54.0" cy="15.0" r="3.25" fill="none" stroke="red" stroke-width="0.3"/><line x1="51.0" y1="15.0" x2="57.0" y2="15.0" stroke="red" stroke-width="0.15"/><text x="54.0" y="36.0" font-size="3.5" text-anchor="middle" font-family="sans-serif">54</text><circle cx="283.2" cy="15.0" r="5.25" fill="none" stroke="red" stroke-width="0.3"/><line x1="280.2" y1="15.0" x2="286.2" y2="15.0" stroke="red" stroke-width="0.15"/><text x="283.2" y="36.0" font-size="3.5" text-anchor="middle" font-family="sans-serif">283</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="305mm" height="90.0mm" viewBox="-10 -40 305 90.0">
+<rect x="-10" y="-40" width="305" height="90.0" fill="white"/>
+<rect x="0" y="0" width="284.6" height="30.0" fill="none" stroke="black" stroke-width="0.3"/>
+<line x1="0" y1="15.0" x2="284.6" y2="15.0" stroke="gray" stroke-width="0.15" stroke-dasharray="2,2"/>
+<circle cx="18.0" cy="15.0" r="3.25" fill="none" stroke="red" stroke-width="0.3"/><line x1="15.0" y1="15.0" x2="21.0" y2="15.0" stroke="red" stroke-width="0.15"/><text x="18.0" y="36.0" font-size="3.5" text-anchor="middle" font-family="sans-serif">18</text><circle cx="54.0" cy="15.0" r="3.25" fill="none" stroke="red" stroke-width="0.3"/><line x1="51.0" y1="15.0" x2="57.0" y2="15.0" stroke="red" stroke-width="0.15"/><text x="54.0" y="36.0" font-size="3.5" text-anchor="middle" font-family="sans-serif">54</text><circle cx="262.6" cy="15.0" r="5.25" fill="none" stroke="red" stroke-width="0.3"/><line x1="259.6" y1="15.0" x2="265.6" y2="15.0" stroke="red" stroke-width="0.15"/><text x="262.6" y="36.0" font-size="3.5" text-anchor="middle" font-family="sans-serif">263</text>
 <text x="0" y="-28" font-size="5" font-family="sans-serif">Pletina HORQUILLA DELANTERA 30x5 (hacer 2) — ESCALA 1:1 (imprimir al 100 %, comprobar la regla de 100 mm)</text>
-<text x="0" y="-20" font-size="3.6" font-family="sans-serif">Largo 305 mm. 2 agujeros M6 (Ø6,5) y eje Ø10.5. En UNA pletina de cada horquilla el eje como ranura de 16 mm (alineación).</text>
+<text x="0" y="-20" font-size="3.6" font-family="sans-serif">Largo 285 mm. 2 agujeros M6 (Ø6,5) y eje Ø10.5. En UNA pletina de cada horquilla el eje como ranura de 16 mm (alineación).</text>
 <line x1="0" y1="-12" x2="100" y2="-12" stroke="black" stroke-width="0.5"/><text x="102" y="-11" font-size="4" font-family="sans-serif">100 mm</text>
 </svg>

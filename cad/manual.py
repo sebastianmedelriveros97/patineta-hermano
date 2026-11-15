@@ -110,9 +110,9 @@ html = f"""<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Man
 <tr><td><span class="tag" style="background:#e65100">1</span> Kit trote</td><td>3 ruedas EVA 12" macizas (sin cámara). Dos módulos de ruedas que se enclachan en 4 soportes fijos.</td><td><b>≈ 1 min</b> · 4 pasadores de bola</td></tr>
 <tr><td><span class="tag" style="background:#1565c0">2</span> Patineta</td><td>Tabla con sillín detrás del coche. Rebatible: se levanta y queda colgada atrás.</td><td><b>≈ 20 s</b> · 2 pasadores · plegar: 1 hebilla</td></tr>
 <tr><td><span class="tag" style="background:#2e7d32">3</span> Hamaca</td><td>Lona para que la niña duerma sentada en el sillín.</td><td><b>≈ 30 s</b> · 4 hebillas click</td></tr>
-<tr><td><span class="tag" style="background:#6a1b9a">4</span> Bandeja</td><td>Tablet 11" + 2 portavasos sobre el manillar.</td><td>Queda puesta (4 pernos)</td></tr>
+<tr><td><span class="tag" style="background:#6a1b9a">4</span> Bandeja</td><td>Tablet 11" + 2 portavasos sobre el manillar.</td><td><b>≈ 20 s</b> · 4 perillas</td></tr>
 </table>
-<p class="nota">Las medidas del coche son <b>estimadas</b> de la ficha técnica (85,5 × 47 × 103,5 cm; ruedas 18/21 cm). Antes de imprimir, mide tu coche,
+<p class="nota">Geometría del coche calibrada con fotos del Leona 2 y la ficha (85,5 × 47 × 103,5 cm). Antes de imprimir, confirma las medidas [MEDIR],
 corrige <code>cad/params.py</code> y regenera todo (<code>build.py</code> → <code>plano.py</code> → <code>thumbs.py</code> → <code>manual.py</code>): este manual se recalcula solo.
 Versión generada el {HOY}.</p>
 </div>
@@ -134,10 +134,14 @@ Los módulos grandes (<b>ruedas y patineta</b>) se ponen y sacan con <b>pasadore
 <p>Las piezas ya vienen orientadas; las tuercas van <b>cautivas</b> en alojamientos hexagonales. Imprime primero <code>stl/00_pruebas</code> y verifica que entren
 en tu tubo con ~1 mm de juego por lado (ese juego lo rellena una tira de cámara de bicicleta).</p>
 <h3>Medidas a tomar del coche</h3>
-{check(["Pata trasera y delantera: ancho, fondo, radio de esquina e inclinación",
-        "Altura del tope de la carcasa de la rueda trasera y del giratorio delantero",
-        "Distancia entre ejes original y distancia del centro a la cara exterior de la rueda trasera",
-        "Diámetro del manillar (con espuma) y de los tubos laterales del manillar"])}
+<p>La geometría ya está calibrada con fotos del coche (chasis en X, ruedas traseras juntas al centro con resortes y freno central).
+Confirma con huincha y pie de metro:</p>
+{check(["Tubo recto manillar→rueda delantera, justo sobre el giratorio: ancho y fondo (pie de metro)",
+        "Pata trasera (del buje del asiento hacia atrás-abajo): ancho, fondo y largo del tramo recto",
+        "Altura al suelo del extremo inferior de la pata trasera y del giratorio delantero",
+        "Distancia entre centros de las 2 patas traseras y entre las 2 delanteras",
+        "Distancia entre ejes, y separación entre las 2 ruedas traseras originales",
+        "Manillar: diámetro del cuero, ancho de la caja del botón de plegado, diámetro de los tubos laterales"])}
 <h3>Regla de oro al apretar</h3>
 <p>Una vuelta de cámara de bicicleta alrededor del tubo · tuerca en su alojamiento · pernos <b>en cruz</b> hasta que la pieza no gire con la mano. No más: el plástico se parte.</p>
 </section>
@@ -148,7 +152,7 @@ en tu tubo con ~1 mm de juego por lado (ese juego lo rellena una tira de cámara
 <h3>Materiales a comprar</h3>
 {compras([
  ("Rueda EVA aro 12\" (espuma maciza, sin cámara) con rodamientos y eje roscado M10 (o M8)", "3", ruedas_busqueda),
- ("Pasador de bola con botón (quick release pin) Ø6 mm, largo útil 40 mm, inoxidable, con cordón", "4", "Mercado Libre: «pasador bloqueo bola 6 mm» / «quick release pin 6mm». Ver nota sobre largo."),
+ ("Pasador de bola con botón (quick release pin) Ø6 mm, largo útil 40 mm, inoxidable, con cordón", "4 + 1", "Mercado Libre: «pasador bloqueo bola 6 mm» / «quick release pin 6mm». Ver nota sobre largo. El 5º es el freno de estacionamiento."),
  ("Tubo cuadrado aluminio 20x20x2 mm", f"{C['trav_del']:.0f} + {C['trav_tras']:.0f} mm", "Sodimac / Easy (tira de 1 m x 2, o 3 m)"),
  ("Pletina acero 30x5 mm", f"2 x {fd['largo']:.0f} + 4 x {ft['largo']:.0f} mm", "Sodimac (≈1,5 m). Pintar con anticorrosivo"),
  ("Perno M6x50 + tuerca + golilla", "20", "soportes con silla (fijos)"),
@@ -189,8 +193,10 @@ Ata cada pasador con su cordón al soporte para no perderlo.</p>
 </div>
 {plano_crop(5, 160, 150, 132, 120)}
 <h3>Revisión antes de cada salida</h3>
-{check(["4 pasadores trabados (tira de cada uno)", "Soportes sin grietas, no se deslizan en la pata", "Tuercas de los ejes apretadas, ruedas sin juego",
+{check(["4 pasadores trabados (tira de cada uno)", "Pasador de freno a mano (cordón)", "Soportes sin grietas, no se deslizan en la pata", "Tuercas de los ejes apretadas, ruedas sin juego",
         "El coche va derecho (si no, alinear)", "Correa de muñeca puesta"])}
+<p class="nota"><b>Freno de estacionamiento:</b> con el kit puesto, el freno original queda en el aire. Cada pletina trasera exterior tiene un agujero extra:
+mete un pasador entre los rayos de la rueda EVA para dejarla bloqueada. No sueltes el coche en pendiente sin ponerlo.</p>
 <p class="peligro"><b>Ruedas EVA:</b> no se pinchan y son livianas, pero no amortiguan como un neumático con aire. Úsalas en pavimento, ciclovías y tierra compactada, a ritmo moderado.
 El kit no tiene freno de mano: <b>siempre con correa de muñeca</b>. Patineta y hamaca <b>siempre desmontadas</b> al trotar.</p>
 </section>
@@ -285,7 +291,7 @@ Que el mentón no quede pegado al pecho; revísala seguido.</p>
 <h3>Materiales a comprar</h3>
 {compras([
  ("Perno M5x25 + tuerca", "4", "abrazaderas al manillar"),
- ("Perno M5x20", "4", "bandeja a las abrazaderas (tuercas cautivas)"),
+ ("Perilla / pomo roscado M5x20", "4", "bandeja a las abrazaderas sin herramientas (tuercas cautivas)"),
  ("Perno M4x20 + tuerca", "3", "unir las 2 mitades"),
  ("Perno M4x12", "4", "portavasos (tuercas cautivas)"),
  ("Tira de cámara de bicicleta", "2", "agarre en el manillar"),
@@ -293,10 +299,10 @@ Que el mentón no quede pegado al pecho; revísala seguido.</p>
 <h3>Piezas impresas</h3>
 {piezas_tabla("04_bandeja")}
 {pasos(["Une las 2 mitades con 3 x M4x20 por los nervios centrales.",
-        "Abrazaderas del manillar (superior + inferior, 2 x M5x25) a <b>180 mm</b> entre centros, pestaña hacia adelante y horizontal.",
+        "Abrazaderas del manillar (superior + inferior, 2 x M5x25) a <b>230 mm</b> entre centros, a cada lado de la caja del botón de plegado, pestaña hacia adelante y horizontal.",
         "Atornilla la bandeja a las pestañas (4 x M5x20) y un portavasos bajo cada borde lateral (2 x M4x12 c/u).",
         "Calzos de TPU para vasos de 72 o 62 mm. Los vasos impresos sirven para snacks secos; para líquidos usa vasos comerciales.",
-        "La bandeja puede quedar siempre puesta: no impide plegar el coche si la capota se abre hacia atrás (verifícalo)."])}
+        "La bandeja tapa el botón de plegado: se fija con 4 <b>perillas M5</b> (tornillo con pomo) en vez de pernos, y sale en segundos para plegar el coche. Las abrazaderas quedan puestas."])}
 </section>
 
 <section class="s0">

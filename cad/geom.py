@@ -14,7 +14,7 @@ REAR_HUB = (P.EJE_TRASERO_ORIG_X, RR0)
 b = math.radians(P.PATA_TRASERA_ANGULO)
 REAR_UP = (-math.sin(b), math.cos(b))           # dirección "arriba" de la pata trasera
 REAR_FWD = (-math.cos(b), -math.sin(b))         # eje X local del soporte (hacia adelante)
-REAR_LEG_BOT = (P.EJE_TRASERO_ORIG_X, P.PATA_TRASERA_TOPE_Z)
+REAR_LEG_BOT = (P.PATA_TRASERA_BASE_X, P.PATA_TRASERA_TOPE_Z)
 
 a = math.radians(P.PATA_DELANTERA_ANGULO)
 FRONT_UP = (math.sin(a), math.cos(a))            # pata delantera sube hacia atrás
@@ -65,7 +65,9 @@ REAR_BRACKET_CENTER = from_rear_local((0, REAR_BRACKET_LEN / 2))
 REAR_BEAM = from_rear_local((-SADDLE_OFFSET, REAR_SADDLE_Z))
 REAR_AXLE = (REAR_HUB[0] + P.EJE_TRASERO_ATRAS, RN - P.ELEVACION)
 # rueda trasera nueva por fuera de la original
-REAR_WHEEL_Y = P.RUEDA_ORIG_EXTERIOR + 12 + P.PLETINA_ESPESOR + P.BUJE_ANCHO / 2
+LEG_Y = P.PATA_SEPARACION / 2
+# rueda trasera nueva por fuera de la pata trasera (soporte de 25 mm + 10 de holgura)
+REAR_WHEEL_Y = LEG_Y + 25 + 10 + P.PLETINA_ESPESOR + P.BUJE_ANCHO / 2
 
 FRONT_FWD = (-math.cos(a), math.sin(a))          # ⟂ a la pata delantera, hacia adelante
 
@@ -95,11 +97,11 @@ def fork(tube, axle):
 def checks():
     msgs = []
     if FRONT_BRACKET_BOTTOM[1] < P.PATA_DELANTERA_TOPE_Z - 1:
-        msgs.append(f"AVISO: el soporte delantero baja hasta z={FRONT_BRACKET_BOTTOM[1]:.0f} y la rueda giratoria llega a "
+        msgs.append(f"AVISO: el soporte delantero baja hasta z={FRONT_BRACKET_BOTTOM[1]:.0f} y el giratorio llega a "
                     f"{P.PATA_DELANTERA_TOPE_Z:.0f}: sube TRAVESANO_ALTURA.")
-    top_orig = REAR_HUB[1] + RR0
-    if REAR_BEAM[1] - 10 < top_orig + 8:
-        msgs.append(f"AVISO: el travesaño trasero (z={REAR_BEAM[1]:.0f}) roza la rueda trasera original (tope {top_orig:.0f}).")
-    if REAR_WHEEL_Y - P.BUJE_ANCHO / 2 - P.PLETINA_ESPESOR < P.RUEDA_ORIG_EXTERIOR + 5:
-        msgs.append("AVISO: la horquilla trasera choca con la rueda original.")
+    # rueda nueva vs ruedas originales (en planta)
+    if REAR_WHEEL_Y - P.RUEDA_RUNNING_ANCHO / 2 < P.RUEDAS_TRASERAS_ORIG_Y + 30:
+        msgs.append("AVISO: la rueda trasera nueva queda muy cerca de la original.")
+    if REAR_BEAM[1] < REAR_HUB[1] + RR0 + 10 and abs(REAR_BEAM[0] - REAR_HUB[0]) < RR0:
+        msgs.append("AVISO: el travesaño trasero roza las ruedas originales.")
     return msgs

@@ -128,9 +128,11 @@ def extras():
         f = c[key]
         _plantilla(f"plantilla_pletina_horquilla_{key}_1a1.svg",
                    f"Pletina HORQUILLA {key.upper()} {P.PLETINA_ANCHO:.0f}x{P.PLETINA_ESPESOR:.0f} (hacer {cant})",
-                   [(f["h1"], 6.5), (f["h2"], 6.5), (f["eje"], P.EJE_RUEDA + 0.5)], f["largo"],
+                   [(f["h1"], 6.5), (f["h2"], 6.5), (f["eje"], P.EJE_RUEDA + 0.5)]
+                   + ([(f["eje"] - 80, 6.5)] if key == "trasera" else []), f["largo"],
                    f"Largo {f['largo']:.0f} mm. 2 agujeros M6 (Ø6,5) y eje Ø{P.EJE_RUEDA + 0.5:.1f}. "
-                   f"En UNA pletina de cada horquilla el eje como ranura de 16 mm (alineación).")
+                   f"En UNA pletina de cada horquilla el eje como ranura de 16 mm (alineación)."
+                   + (" Agujero a eje-80: FRENO de estacionamiento (pasador entre los rayos), solo en las 2 pletinas exteriores." if key == "trasera" else ""))
     for old in ("plantilla_pletina_horquilla_1a1.svg", "plantilla_pletina_brazo_trasero_1a1.svg"):
         p = os.path.join(ROOT, "docs", old)
         if os.path.exists(p):

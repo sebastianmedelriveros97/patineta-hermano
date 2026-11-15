@@ -117,45 +117,56 @@ def wheel(v, c, r, tire=None, color=C_FRAME, dash=None, spokes=0):
         v.line(c, (c[0] + math.cos(a) * (r - tire), c[1] + math.sin(a) * (r - tire)), "#90a4ae", 0.12)
 
 
+def handle_points():
+    """tubo recto (prolongación de la pata delantera) + asa de cuero en curva hasta el manillar"""
+    up = G.FRONT_UP
+    zt = 960.0
+    t = (zt - G.FRONT_LEG_BOT[1]) / up[1]
+    top = (G.FRONT_LEG_BOT[0] + up[0] * t, zt)
+    return top
+
+
 def stroller_side(v, dz, orig_dash=False):
-    """Maxi-Cosi Leona 2 en vista lateral (geometría estimada)."""
+    """Maxi-Cosi Leona 2 en vista lateral, calibrado con fotos (chasis en X)."""
     H = shift(G.HINGE, dz)
     FL = shift(G.FRONT_LEG_BOT, dz)
     RL = shift(G.REAR_LEG_BOT, dz)
     HB = (P.MANILLAR_X, P.MANILLAR_Z + dz)
+    TOP = shift(handle_points(), dz)
+    S = lambda pts: [shift(q, dz) for q in pts]
     dash = "1,0.8" if orig_dash else None
     # cesto
-    bk = [(120, 170), (530, 170), (555, 320), (110, 320)]
-    v.poly([shift(q, dz) for q in bk], stroke=C_SOFT, fill="url(#mesh)", w=0.25)
+    v.poly(S([(55, 150), (370, 150), (425, 270), (405, 395), (110, 400), (40, 260)]), stroke=C_SOFT, fill="url(#mesh)", w=0.25)
     # ruedas originales
     wheel(v, shift(G.FRONT_HUB, dz), G.RF0, color=C_FRAME, dash=dash)
     wheel(v, shift(G.REAR_HUB, dz), G.RR0, color=C_FRAME, dash=dash)
-    # horquilla giratoria delantera y carcasa trasera
-    v.poly([shift(q, dz) for q in [(-5, 90), (35, 90), (45, 225), (5, 225)]], stroke=C_FRAME, fill="#78909c", w=0.2)
-    v.poly([shift(q, dz) for q in [(530, 95), (585, 95), (590, 155), (530, 155)]], stroke=C_FRAME, fill="#78909c", w=0.2)
-    v.poly([shift(q, dz) for q in [(585, 140), (630, 135), (632, 150), (588, 155)]], stroke=C_FRAME, fill="#90a4ae", w=0.15)  # freno
-    # chasis
-    v.tube(FL, H)
-    v.tube(RL, H)
-    v.tube(H, HB)
-    v.circle(HB, 16, stroke=C_FRAME, fill="#37474f", w=0.2)  # manillar con espuma
-    # apoyabrazos + barra frontal
-    v.tube(H, (H[0] - 190, H[1] + 25), 18)
-    v.circle((H[0] - 195, H[1] + 25), 14, stroke=C_FRAME, fill="#37474f", w=0.2)
-    # asiento, respaldo, apoyapiés
-    v.poly([shift(q, dz) for q in [(110, 470), (385, 440), (395, 470), (130, 500)]], stroke=C_SOFT, fill=C_FAB, w=0.25)
-    v.poly([shift(q, dz) for q in [(370, 445), (560, 880), (525, 895), (345, 470)]], stroke=C_SOFT, fill=C_FAB, w=0.25)
-    v.poly([shift(q, dz) for q in [(40, 325), (140, 345), (140, 365), (40, 348)]], stroke=C_SOFT, fill=C_FAB, w=0.25)
-    v.tube(shift((110, 470), dz), shift((60, 345), dz), 40, C_FAB)  # tela pierna
-    # capota
-    v.path([("M", [450, 760 + dz]), ("C", [520, 1000 + dz, 260, 1060 + dz, 130, 820 + dz]),
-            ("L", [175, 810 + dz]), ("C", [270, 990 + dz, 470, 960 + dz, 415, 765 + dz]), ("Z", [])],
-           stroke="#78909c", fill="#b0bec5", w=0.25)
+    # giratorio delantero (horquilla de un lado)
+    v.poly(S([(5, 195), (40, 195), (22, 95), (-12, 100)]), stroke=C_FRAME, fill="#37474f", w=0.2)
+    # conjunto trasero: soporte + resorte + eje con freno central
+    v.poly(S([(392, 205), (418, 188), (478, 128), (470, 100), (448, 100), (395, 168)]), stroke=C_FRAME, fill="#37474f", w=0.2)
+    zz = [(436, 158), (452, 150), (436, 142), (452, 134), (436, 126), (452, 118)]
+    v.poly(S(zz), stroke="#b0bec5", fill="none", w=0.25, close=False)
+    # chasis en X
+    v.tube(FL, TOP, 24)
+    v.tube(RL, H, 24)
+    knob = shift(((G.FRONT_LEG_BOT[0] + G.FRONT_UP[0] * (776 - G.FRONT_LEG_BOT[1]) / G.FRONT_UP[1]), 776), dz)
+    # asa de cuero
+    v.path([("M", [TOP[0], TOP[1]]), ("C", [TOP[0] + 60, TOP[1] + 90, HB[0] - 60, HB[1] + 40, HB[0], HB[1]])], stroke="#8d5524", w=3.0)
+    v.circle(HB, 15, stroke="#5d4037", fill="#8d5524", w=0.2)
+    v.circle(knob, 34, stroke="#263238", fill="#455a64", w=0.25)
+    # asiento: cojín + apoyapiernas + respaldo
+    v.poly(S([(265, 455), (150, 470), (-95, 430), (-100, 470), (150, 515), (280, 505)]), stroke="#2e5d4f", fill="#4f7f6f", w=0.25)
+    v.poly(S([(265, 470), (470, 950), (420, 975), (215, 500)]), stroke="#2e5d4f", fill="#4f7f6f", w=0.25)
+    # capota plegada sobre el respaldo
+    v.path([("M", [330, 780 + dz]), ("C", [380, 1000 + dz, 520, 1040 + dz, 560, 960 + dz]), ("L", [505, 860 + dz]), ("Z", [])], stroke="#2e5d4f", fill="#3f6b5d", w=0.25)
+    # barra frontal (bumper) de cuero
+    v.tube(shift((150, 590), dz), shift((-30, 640), dz), 22, "#8d5524")
+    v.circle(H, 45, stroke="#263238", fill="#37474f", w=0.25)
     # bebé (1 año)
-    v.circle(shift((420, 760), dz), 62, stroke="#c8a58c", fill=C_KID, w=0.2)
-    v.tube(shift((395, 690), dz), shift((300, 520), dz), 95, C_KID)
-    v.tube(shift((300, 515), dz), shift((175, 505), dz), 70, C_KID)
-    v.tube(shift((175, 500), dz), shift((130, 380), dz), 55, C_KID)
+    v.circle(shift((335, 790), dz), 62, stroke="#c8a58c", fill=C_KID, w=0.2)
+    v.tube(shift((310, 720), dz), shift((250, 530), dz), 95, C_KID)
+    v.tube(shift((250, 525), dz), shift((60, 520), dz), 70, C_KID)
+    v.tube(shift((60, 515), dz), shift((-60, 495), dz), 55, C_KID)
     return H, HB
 
 
@@ -249,8 +260,8 @@ def board_side(v, dz=0.0):
 def hammock_and_kid(v, b, H, HB):
     cx, sz = b["cx"], b["seat_z"]
     # anclaje superior en el tubo del manillar
-    t = 0.68
-    TA = (H[0] + (HB[0] - H[0]) * t, H[1] + (HB[1] - H[1]) * t)
+    za = 880.0   # anclaje en el tubo recto del manillar (prolongación de la pata delantera)
+    TA = (G.FRONT_LEG_BOT[0] + G.FRONT_UP[0] * (za - G.FRONT_LEG_BOT[1]) / G.FRONT_UP[1], za)
     v.circle(TA, 22, stroke=C_HAM, fill="#a5d6a7", w=0.3)
     # niña de 4 años dormida, mirando hacia el adulto (hacia atrás)
     v.tube((cx - 25, sz + 30), (cx - 165, sz + 330), 120, C_KID)          # torso reclinado
@@ -356,29 +367,28 @@ def build():
     yW = P.ANCHO_CHASIS / 2
     leg = yW - P.PATA_TRASERA_ANCHO / 2
     v3.text((-150, 300), "3 · PLANTA — MODO PASEO", "#111", 3.4, weight="bold")
-    # coche
+    # coche (planta)
+    legY = G.LEG_Y
+    top = handle_points()
+    v3.rect(60, -190, 400, 190, stroke=C_SOFT, fill="url(#mesh)", w=0.2)
     for s in (1, -1):
-        v3.tube((G.FRONT_LEG_BOT[0], s * leg), (G.HINGE[0], s * leg))
-        v3.tube((G.REAR_LEG_BOT[0], s * leg), (G.HINGE[0], s * leg))
-        v3.tube((G.HINGE[0], s * leg), (P.MANILLAR_X, s * leg))
-        v3.rect(-G.RF0, s * leg - 15 * s, G.RF0, s * leg + 25 * s, stroke=C_FRAME, fill="#263238", w=0.2)
-        v3.rect(G.REAR_HUB[0] - G.RR0, s * (leg + 8), G.REAR_HUB[0] + G.RR0, s * (leg + 48), stroke=C_FRAME, fill="#263238", w=0.2)
-    v3.tube((P.MANILLAR_X, -yW), (P.MANILLAR_X, yW), 30, "#37474f")
-    v3.rect(130, -165, 560, 165, stroke=C_SOFT, fill=C_FAB, w=0.25)
-    v3.path([("M", [150, -205]), ("C", [300, -240, 430, -240, 470, -205]), ("L", [470, 205]), ("C", [430, 240, 300, 240, 150, 205]), ("Z", [])], stroke="#78909c", fill="#b0bec5", w=0.25)
-    v3.tube((G.HINGE[0] - 195, -yW + 10), (G.HINGE[0] - 195, yW - 10), 25, "#37474f")
-    # bandeja
-    tw = P.TABLET_ANCHO + 10
-    v3.rect(tf, -tw / 2, tr, tw / 2, stroke=C_TRAY, fill="#e1bee7", w=0.3)
-    v3.rect(tf + 8, -P.TABLET_ANCHO / 2 + 5, tf + 8 + P.TABLET_FONDO * 0.95, P.TABLET_ANCHO / 2 - 5, stroke="#9e9e9e", fill="none", w=0.15, dash="0.8,0.5")
-    cupc = tw / 2 - 12 + 12 + P.VASO_DIAM / 2 + 4
-    for s in (1, -1):
-        v3.circle(((tf + tr) / 2, s * cupc), P.VASO_DIAM / 2 + 3, stroke=C_TRAY, fill="#ce93d8", w=0.3)
-        v3.circle(((tf + tr) / 2, s * cupc), P.VASO_DIAM / 2 - 4, stroke=C_TRAY, fill="white", w=0.2)
+        v3.tube((G.FRONT_LEG_BOT[0], s * legY), (top[0], s * legY))
+        v3.tube((G.REAR_LEG_BOT[0], s * legY), (G.HINGE[0], s * legY))
+        v3.path([("M", [top[0], s * legY]), ("C", [top[0] + 120, s * (legY + 15), P.MANILLAR_X - 20, s * (yW - 5), P.MANILLAR_X, s * (yW - 40)])], stroke="#8d5524", w=3.0)
+        v3.rect(-G.RF0, s * P.RUEDAS_DELANTERAS_ORIG_Y - 18, G.RF0, s * P.RUEDAS_DELANTERAS_ORIG_Y + 18, stroke=C_FRAME, fill="#263238", w=0.2)
+        v3.rect(G.REAR_HUB[0] - G.RR0, s * P.RUEDAS_TRASERAS_ORIG_Y - 18, G.REAR_HUB[0] + G.RR0, s * P.RUEDAS_TRASERAS_ORIG_Y + 18, stroke=C_FRAME, fill="#263238", w=0.2)
+        v3.tube((G.REAR_LEG_BOT[0], s * legY), (G.REAR_HUB[0], s * (P.RUEDAS_TRASERAS_ORIG_Y - 30)), 20, "#37474f")
+    v3.tube((G.REAR_HUB[0], -P.RUEDAS_TRASERAS_ORIG_Y), (G.REAR_HUB[0], P.RUEDAS_TRASERAS_ORIG_Y), 20, "#37474f")
+    v3.tube((P.MANILLAR_X, -(yW - 40)), (P.MANILLAR_X, yW - 40), 30, "#8d5524")
+    v3.rect(P.MANILLAR_X - 45, -P.MANILLAR_BOTON_ANCHO / 2, P.MANILLAR_X - 10, P.MANILLAR_BOTON_ANCHO / 2, stroke="#222", fill="#37474f", w=0.2)
+    v3.rect(-100, -165, 280, 165, stroke="#2e5d4f", fill="#4f7f6f", w=0.25)
+    v3.path([("M", [300, -215]), ("C", [420, -235, 540, -230, 560, -200]), ("L", [560, 200]), ("C", [540, 230, 420, 235, 300, 215]), ("Z", [])], stroke="#2e5d4f", fill="#3f6b5d", w=0.25)
+    v3.tube((-30, -yW + 15), (-30, yW - 15), 22, "#8d5524")
     # hamaca
     v3.poly([(TA[0], -yW + 15), (TA[0], yW - 15), (b["cx"] - 60, 190), (b["cx"] - 60, -190)], stroke=C_HAM, fill="#c8e6c9", w=0.3, dash="1,0.5")
     # patineta
     lat, n, tilt, theta = X._arm_geometry()
+    leg = G.LEG_Y
     for s in (1, -1):
         v3.tube((b["piv"][0], s * (leg - 16)), (b["king"][0] - 25, s * 18), P.BRAZO_TUBO, "#90a4ae")
         v3.rect(b["piv"][0] - 35, s * (leg - 25), b["piv"][0] + 35, s * (leg + 25), stroke=C_BOARD, fill="#bbdefb", w=0.25)
@@ -391,8 +401,17 @@ def build():
         v3.rect(b["wheel"] - 40, s * (P.TABLA_ANCHO / 2 - 45) - 12, b["wheel"] + 40, s * (P.TABLA_ANCHO / 2 - 45) + 12, stroke=C_BOARD, fill="#263238", w=0.2)
     v3.circle(b["king"], 26, stroke=C_BOARD, fill="#bbdefb", w=0.3)
     add(f'<ellipse cx="{v3.p(b["cx"], 0)[0]:.2f}" cy="{v3.p(b["cx"], 0)[1]:.2f}" rx="8.5" ry="10.5" stroke="{C_BOARD}" fill="#64b5f6" stroke-width="0.3"/>')
+    # bandeja
+    tw = P.TABLET_ANCHO + 10
+    v3.rect(tf, -tw / 2, tr, tw / 2, stroke=C_TRAY, fill="#e1bee7", w=0.3)
+    add('<g opacity="0.85"/>')
+    v3.rect(tf + 8, -P.TABLET_ANCHO / 2 + 5, tf + 8 + P.TABLET_FONDO * 0.95, P.TABLET_ANCHO / 2 - 5, stroke="#9e9e9e", fill="none", w=0.15, dash="0.8,0.5")
+    cupc = tw / 2 - 12 + 12 + P.VASO_DIAM / 2 + 4
+    for s in (1, -1):
+        v3.circle(((tf + tr) / 2, s * cupc), P.VASO_DIAM / 2 + 3, stroke=C_TRAY, fill="#ce93d8", w=0.3)
+        v3.circle(((tf + tr) / 2, s * cupc), P.VASO_DIAM / 2 - 4, stroke=C_TRAY, fill="white", w=0.2)
     v3.dim((b["x1"], -200), (b["x1"], 200), 60, f"{P.TABLA_ANCHO:.0f}", vertical=True)
-    v3.dim((-G.RF0, -yW), (-G.RF0, yW), -60, f"ancho coche {P.ANCHO_CHASIS:.0f}", vertical=True)
+    v3.dim((-G.RF0, -yW), (-G.RF0, yW), -60, f"ancho {P.ANCHO_CHASIS:.0f}", vertical=True)
 
     # ---------------- VISTA 4: trasera modo trote
     hy = 25
@@ -406,11 +425,20 @@ def build():
     YW = G.REAR_WHEEL_Y
     half_beam = YW + P.BUJE_ANCHO / 2 + P.PLETINA_ESPESOR + 8
     v4.rect(-half_beam, zb - 10, half_beam, zb + 10, stroke="#222", fill="#bdbdbd", w=0.2)
+    leg = G.LEG_Y
+    # conjunto trasero original (angosto, con resortes y freno central)
+    v4.tube((-leg, zbr0), (leg, zbr0), 22, "#37474f")
+    for s_ in (1, -1):
+        v4.tube((s_ * 110, zbr0), (s_ * 110, G.RR0 + dz + 25), 22, "#37474f")
+        v4.poly([(s_ * 98, G.RR0 + dz + 55), (s_ * 122, G.RR0 + dz + 45), (s_ * 98, G.RR0 + dz + 35), (s_ * 122, G.RR0 + dz + 25)], stroke="#b0bec5", fill="none", w=0.3, close=False)
+        yo = s_ * P.RUEDAS_TRASERAS_ORIG_Y
+        v4.rect(yo - 18, dz, yo + 18, dz + 2 * G.RR0, stroke=C_FRAME, fill="none", w=0.25, dash="1,0.8")
+    v4.tube((-P.RUEDAS_TRASERAS_ORIG_Y + 18, G.RR0 + dz), (P.RUEDAS_TRASERAS_ORIG_Y - 18, G.RR0 + dz), 18, "#37474f")
+    v4.rect(-22, G.RR0 + dz + 5, 22, G.RR0 + dz + 30, stroke="#222", fill="#263238", w=0.15)
     for s_ in (1, -1):
         y = s_ * leg
         v4.tube((y, zbr0), (y, zH))
         v4.tube((y, zH), (s_ * (yW - 5), P.MANILLAR_Z + dz))
-        v4.rect(s_ * (leg + 8), dz, s_ * (leg + 48), dz + 2 * G.RR0, stroke=C_FRAME, fill="none", w=0.25, dash="1,0.8")
         v4.rect(y - hy, zbr0, y + hy, zbr0 + G.REAR_BRACKET_LEN * math.cos(math.radians(P.PATA_TRASERA_ANGULO)), stroke=C_RUN, fill="#ffcc80", w=0.3)
         v4.circle((y, zb), 5, stroke="#b71c1c", fill="#e53935", w=0.15)
         yw = s_ * YW
@@ -420,25 +448,27 @@ def build():
         v4.rect(yw - P.BUJE_ANCHO / 2, zb - 17, yw + P.BUJE_ANCHO / 2, zb + 17, stroke=C_RUN, fill="#ffcc80", w=0.2)
         v4.rect(yw - P.RUEDA_RUNNING_ANCHO / 2, 0, yw + P.RUEDA_RUNNING_ANCHO / 2, 2 * G.RN, stroke=C_RUN, fill="#455a64", w=0.3)
         v4.rect(yw - P.BUJE_ANCHO / 2 - 9, G.RN - 6, yw + P.BUJE_ANCHO / 2 + 9, G.RN + 6, stroke="#222", fill="#9e9e9e", w=0.12)
-    v4.tube((-yW + 5, P.MANILLAR_Z + dz), (yW - 5, P.MANILLAR_Z + dz), 30, "#37474f")
-    v4.rect(-165, 470 + dz, 165, 880 + dz, stroke=C_SOFT, fill=C_FAB, w=0.25)
-    v4.path([("M", [-215, 820 + dz]), ("C", [-215, 1060 + dz, 215, 1060 + dz, 215, 820 + dz]), ("Z", [])], stroke="#78909c", fill="#b0bec5", w=0.25)
-    v4.rect(-210, 170 + dz, 210, 320 + dz, stroke=C_SOFT, fill="url(#mesh)", w=0.25)
+    v4.tube((-yW + 5, P.MANILLAR_Z + dz), (yW - 5, P.MANILLAR_Z + dz), 30, "#8d5524")
+    v4.rect(-P.MANILLAR_BOTON_ANCHO / 2, P.MANILLAR_Z + dz - 18, P.MANILLAR_BOTON_ANCHO / 2, P.MANILLAR_Z + dz + 12, stroke="#222", fill="#37474f", w=0.2)
+    v4.rect(-165, 470 + dz, 165, 900 + dz, stroke="#2e5d4f", fill="#4f7f6f", w=0.25)
+    v4.path([("M", [-215, 840 + dz]), ("C", [-215, 1060 + dz, 215, 1060 + dz, 215, 840 + dz]), ("Z", [])], stroke="#2e5d4f", fill="#3f6b5d", w=0.25)
+    v4.rect(-200, 200 + dz, 200, 400 + dz, stroke=C_SOFT, fill="url(#mesh)", w=0.25)
     v4.dim((-YW, 0), (YW, 0), -70, f"trocha {2*YW:.0f}  ·  ancho total {2*half_beam:.0f}")
     v4.callout((-leg, zb), (-560, 760), "pasador de bola", "#c62828", "end")
     v4.callout((-YW - P.BUJE_ANCHO / 2 - 3, zb - 80), (-560, 660), "módulo trasero:", C_STEEL, "end")
     v4.text((-568, 615), "travesaño + 2 horquillas", C_STEEL, 2.3, "end")
     v4.callout((-YW, G.RN - 100), (-560, 470), 'rueda EVA 12"', C_RUN, "end")
-    v4.callout((-(leg + 28), dz + 150), (-560, 330), "rueda original (aire)", "#78909c", "end")
+    v4.callout((-P.RUEDAS_TRASERAS_ORIG_Y, dz + 150), (-560, 330), "ruedas originales (aire)", "#78909c", "end")
+    v4.callout((0, G.RR0 + dz + 20), (-560, 220), "freno original + resortes", "#37474f", "end")
 
     # ---------------- notas + rótulo
     nx, ny = 158, 178
     notas = [
         "NOTAS",
         "• Escala 1:10 en hoja A3. Medidas en mm.",
-        "• Geometría del Leona 2 ESTIMADA de la ficha técnica",
-        "  (85,5 x 47 x 103,5 cm; ruedas 18 / 21 cm). Medir el",
-        "  coche real y corregir cad/params.py antes de imprimir.",
+        "• Geometría del Leona 2 calibrada con fotos + ficha",
+        "  (85,5 x 47 x 103,5 cm). Confirmar con huincha las",
+        "  medidas [MEDIR] de cad/params.py antes de imprimir.",
         "• Naranjo = impreso · gris azulado = acero/alu · rojo = pasador",
         "• Azul = patineta · verde = hamaca · morado = bandeja",
         "• Módulos de ruedas: se enclachan con 4 pasadores de bola.",
