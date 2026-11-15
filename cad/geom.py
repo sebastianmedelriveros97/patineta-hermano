@@ -43,14 +43,15 @@ def _hinge():
 HINGE = _hinge()
 
 # ---- kit running (coordenadas del coche original; en el suelo todo sube ELEVACION)
-REAR_BRACKET_LEN = 110.0
-REAR_BRACKET_CENTER = on_rear_leg(REAR_BRACKET_LEN / 2)
-REAR_AXLE = (REAR_HUB[0] + P.EJE_TRASERO_ATRAS, RN - P.ELEVACION)
+# Soporte con "silla" en U abierta + pasador. Local: x adelante ⟂ pata, z a lo largo de la pata.
+SADDLE_OFFSET = 35.0                       # centro del tubo 20x20 respecto al eje de la pata
+REAR_BRACKET_LEN = 120.0
+REAR_SADDLE_Z = 80.0                       # el travesaño trasero va alto para pasar SOBRE la rueda original
+FRONT_BRACKET_LEN = 100.0
+FRONT_SADDLE_Z = 50.0
 
 
 def to_rear_local(pt):
-    """coordenadas locales del soporte trasero (x adelante ⟂ pata, z a lo largo de la pata,
-    origen en la base del soporte)"""
     vx, vz = pt[0] - REAR_LEG_BOT[0], pt[1] - REAR_LEG_BOT[1]
     return (vx * REAR_FWD[0] + vz * REAR_FWD[1], vx * REAR_UP[0] + vz * REAR_UP[1])
 
@@ -60,16 +61,45 @@ def from_rear_local(p):
             REAR_LEG_BOT[1] + REAR_FWD[1] * p[0] + REAR_UP[1] * p[1])
 
 
-FRONT_FWD = (-math.cos(a), math.sin(a))          # ⟂ a la pata, hacia adelante
-FRONT_TUBE_OFFSET = 35.0                          # centro del tubo 20x20 delante del eje de la pata
+REAR_BRACKET_CENTER = from_rear_local((0, REAR_BRACKET_LEN / 2))
+REAR_BEAM = from_rear_local((-SADDLE_OFFSET, REAR_SADDLE_Z))
+REAR_AXLE = (REAR_HUB[0] + P.EJE_TRASERO_ATRAS, RN - P.ELEVACION)
+# rueda trasera nueva por fuera de la original
+REAR_WHEEL_Y = P.RUEDA_ORIG_EXTERIOR + 12 + P.PLETINA_ESPESOR + P.BUJE_ANCHO / 2
+
+FRONT_FWD = (-math.cos(a), math.sin(a))          # ⟂ a la pata delantera, hacia adelante
 
 
 def _travesano():
     zt = P.TRAVESANO_ALTURA - P.ELEVACION
-    zl = zt - FRONT_FWD[1] * FRONT_TUBE_OFFSET
+    zl = zt - FRONT_FWD[1] * SADDLE_OFFSET
     lx, lz = front_leg_at_z(zl)
-    return (lx + FRONT_FWD[0] * FRONT_TUBE_OFFSET, zt), (lx, lz)
+    return (lx + FRONT_FWD[0] * SADDLE_OFFSET, zt), (lx, lz)
 
 
-TRAVESANO, FRONT_BRACKET_CENTER = _travesano()
+TRAVESANO, _FRONT_SADDLE_ON_LEG = _travesano()
+FRONT_BRACKET_BOTTOM = (_FRONT_SADDLE_ON_LEG[0] - FRONT_UP[0] * FRONT_SADDLE_Z,
+                        _FRONT_SADDLE_ON_LEG[1] - FRONT_UP[1] * FRONT_SADDLE_Z)
+FRONT_BRACKET_CENTER = (FRONT_BRACKET_BOTTOM[0] + FRONT_UP[0] * FRONT_BRACKET_LEN / 2,
+                        FRONT_BRACKET_BOTTOM[1] + FRONT_UP[1] * FRONT_BRACKET_LEN / 2)
 FRONT_AXLE = (TRAVESANO[0] - P.RUEDA_DELANTERA_ADELANTE, RN - P.ELEVACION)
+
+
+def fork(tube, axle):
+    """(largo, ángulo) de la horquilla en coordenadas 'X adelante'."""
+    dx = -(axle[0] - tube[0])
+    dz = axle[1] - tube[1]
+    return math.hypot(dx, dz), math.degrees(math.atan2(dz, dx)), dx, dz
+
+
+def checks():
+    msgs = []
+    if FRONT_BRACKET_BOTTOM[1] < P.PATA_DELANTERA_TOPE_Z - 1:
+        msgs.append(f"AVISO: el soporte delantero baja hasta z={FRONT_BRACKET_BOTTOM[1]:.0f} y la rueda giratoria llega a "
+                    f"{P.PATA_DELANTERA_TOPE_Z:.0f}: sube TRAVESANO_ALTURA.")
+    top_orig = REAR_HUB[1] + RR0
+    if REAR_BEAM[1] - 10 < top_orig + 8:
+        msgs.append(f"AVISO: el travesaño trasero (z={REAR_BEAM[1]:.0f}) roza la rueda trasera original (tope {top_orig:.0f}).")
+    if REAR_WHEEL_Y - P.BUJE_ANCHO / 2 - P.PLETINA_ESPESOR < P.RUEDA_ORIG_EXTERIOR + 5:
+        msgs.append("AVISO: la horquilla trasera choca con la rueda original.")
+    return msgs

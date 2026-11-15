@@ -8,14 +8,13 @@ Cama configurada: 220 mm. Las medidas son X x Y x Z en la orientación de impres
 | 00_pruebas | `prueba_perfil_pata_delantera.stl` | 1 | PLA | 38 x 30 x 8 | OK |
 | 00_pruebas | `prueba_manillar.stl` | 1 | PLA | 36 x 36 x 8 | OK |
 | 00_pruebas | `prueba_tubo_lateral_manillar.stl` | 1 | PLA | 34 x 34 x 8 | OK |
-| 01_kit_running | `soporte_brazo_trasero_A.stl` | 2 | PETG/ASA 100% | 111 x 50 x 62 | OK |
-| 01_kit_running | `soporte_brazo_trasero_B_tapa.stl` | 2 | PETG/ASA 60% | 110 x 50 x 22 | OK |
-| 01_kit_running | `separador_eje_95mm.stl` | 2 | PETG 60% | 28 x 28 x 95 | OK |
-| 01_kit_running | `collarin_eje.stl` | 4 | PETG 100% | 36 x 36 x 14 | OK |
-| 01_kit_running | `soporte_travesano_delantero_A.stl` | 2 | PETG/ASA 100% | 100 x 50 x 51 | OK |
-| 01_kit_running | `soporte_travesano_delantero_B_tapa.stl` | 2 | PETG/ASA 60% | 100 x 50 x 22 | OK |
-| 01_kit_running | `separador_horquilla.stl` | 1 | PETG/ASA 100% | 94 x 82 x 80 | OK |
-| 01_kit_running | `tapon_tubo_cuadrado.stl` | 2 | TPU/PETG | 23 x 23 x 15 | OK |
+| 01_kit_running | `soporte_silla_trasero_A.stl` | 2 | PETG/ASA 100% | 120 x 50 x 52 | OK |
+| 01_kit_running | `soporte_silla_trasero_B_tapa.stl` | 2 | PETG/ASA 60% | 120 x 50 x 22 | OK |
+| 01_kit_running | `soporte_silla_delantero_A.stl` | 2 | PETG/ASA 100% | 100 x 50 x 52 | OK |
+| 01_kit_running | `soporte_silla_delantero_B_tapa.stl` | 2 | PETG/ASA 60% | 100 x 50 x 22 | OK |
+| 01_kit_running | `bloque_horquilla_trasera.stl` | 2 | PETG/ASA 100% | 89 x 86 x 80 | OK |
+| 01_kit_running | `bloque_horquilla_delantera.stl` | 1 | PETG/ASA 100% | 93 x 83 x 80 | OK |
+| 01_kit_running | `tapon_tubo_cuadrado.stl` | 4 | TPU/PETG | 23 x 23 x 15 | OK |
 | 02_patineta | `baldosa_tabla_del_izq.stl` | 1 | PETG 40% giroide | 200 x 150 x 22 | OK |
 | 02_patineta | `baldosa_tabla_del_der.stl` | 1 | PETG 40% giroide | 200 x 150 x 22 | OK |
 | 02_patineta | `baldosa_tabla_tras_izq.stl` | 1 | PETG 40% giroide | 200 x 150 x 22 | OK |
@@ -39,5 +38,3 @@ Cama configurada: 220 mm. Las medidas son X x Y x Z en la orientación de impres
 | 04_bandeja | `calzo_vaso_72mm.stl` | 2 | TPU 95A | 88 x 89 x 60 | OK |
 | 04_bandeja | `calzo_vaso_62mm.stl` | 2 | TPU 95A | 88 x 89 x 60 | OK |
 | 04_bandeja | `vaso_350ml.stl` | 2 | PETG / PP | 81 x 81 x 110 | OK |
-
-**Geometría horquilla delantera calculada:** distancia centro travesaño → eje delantero = **294 mm**, inclinación -38.4° (negativo = hacia abajo).

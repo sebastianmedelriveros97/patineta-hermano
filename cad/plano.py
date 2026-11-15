@@ -159,40 +159,61 @@ def stroller_side(v, dz, orig_dash=False):
     return H, HB
 
 
+def _saddle_poly(v, bottom, up, fw, largo, sz, side, dz):
+    """contorno lateral de un soporte con silla (side=+1 silla hacia adelante (fw), -1 hacia atrás)."""
+    t = P.TUBO_CUADRADO
+    tx = G.SADDLE_OFFSET
+    hx = 22
+    loc = [(-hx * side, 0), (-hx * side, largo), (hx * side, largo), (hx * side, sz + t / 2 + 8),
+           ((tx + t / 2 + 7) * side, sz + t / 2 + 8), ((tx + t / 2 + 7) * side, sz - t / 2 - 8),
+           (hx * side, sz - t / 2 - 8), (hx * side, 0)]
+    pts = [(bottom[0] + fw[0] * x + up[0] * z, bottom[1] + fw[1] * x + up[1] * z + dz) for x, z in loc]
+    v.poly(pts, stroke=C_RUN, fill="#ffcc80", w=0.3)
+    pin = (bottom[0] + fw[0] * tx * side + up[0] * sz, bottom[1] + fw[1] * tx * side + up[1] * sz + dz)
+    return pin
+
+
+def _fork(v, T, A, rot):
+    v.tube(T, A, P.PLETINA_ANCHO, C_STEEL)
+    sq = P.TUBO_CUADRADO / 2
+    c, s_ = math.cos(math.radians(rot)), math.sin(math.radians(rot))
+    v.poly([(T[0] + x * c - z * s_, T[1] + x * s_ + z * c) for x, z in ((-sq, -sq), (sq, -sq), (sq, sq), (-sq, sq))],
+           stroke="#222", fill="#bdbdbd", w=0.2)
+    u = ((A[0] - T[0]), (A[1] - T[1]))
+    n = math.hypot(*u)
+    u = (u[0] / n, u[1] / n)
+    tip = (T[0] + u[0] * 70, T[1] + u[1] * 70)
+    v.poly([(T[0] - 17, T[1] - 17), (T[0] + 17, T[1] - 17), (T[0] + 17, T[1] + 17), (T[0] - 17, T[1] + 17)], stroke=C_RUN, fill="none", w=0.25)
+    v.tube(T, tip, 30, "#ffcc80")
+    for d in (30, 66):
+        v.circle((T[0] + u[0] * d, T[1] + u[1] * d), 5, stroke="#222", fill="#9e9e9e", w=0.12)
+
+
+def eva_wheel(v, c):
+    wheel(v, c, G.RN, tire=48, color=C_RUN, spokes=6)
+
+
 def running_kit_side(v, dz):
-    p1, p2, ax, d, hx, hy = X.rear_arm_geometry()
-    # soporte trasero (contorno en coordenadas locales -> reales)
-    loc = [(hx, 0), (hx, G.REAR_BRACKET_LEN), (-hx, G.REAR_BRACKET_LEN), (-hx, 60), (p1[0] - 13, p1[1]), (p2[0] - 13, p2[1] - 5), (p2[0], p2[1] - 13), (-hx, 0)]
-    v.poly([shift(G.from_rear_local(q), dz) for q in loc], stroke=C_RUN, fill="#ffcc80", w=0.3)
+    rb = G.REAR_LEG_BOT
+    pin_r = _saddle_poly(v, rb, G.REAR_UP, G.REAR_FWD, G.REAR_BRACKET_LEN, G.REAR_SADDLE_Z, -1, dz)
+    pin_f = _saddle_poly(v, G.FRONT_BRACKET_BOTTOM, G.FRONT_UP, G.FRONT_FWD, G.FRONT_BRACKET_LEN, G.FRONT_SADDLE_Z, +1, dz)
     A = shift(G.REAR_AXLE, dz)
-    P1 = shift(G.from_rear_local(p1), dz)
-    v.tube(P1, A, P.PLETINA_ANCHO, C_STEEL)
-    for q in (p1, p2):
-        v.circle(shift(G.from_rear_local(q), dz), 6, stroke="#222", fill="#9e9e9e", w=0.15)
-    wheel(v, A, G.RN, tire=55, color=C_RUN, spokes=10)
-    # delantero
-    a = math.radians(P.PATA_DELANTERA_ANGULO)
-    c = shift(G.FRONT_BRACKET_CENTER, dz)
-    up = G.FRONT_UP
-    fw = G.FRONT_FWD
-    corners = []
-    for sl, sx in ((-50, -22), (50, -22), (50, 22 + 35 + 17), (-50, 22 + 35 + 17)):
-        corners.append((c[0] + up[0] * sl + fw[0] * sx, c[1] + up[1] * sl + fw[1] * sx))
-    v.poly(corners, stroke=C_RUN, fill="#ffcc80", w=0.3)
+    B = shift(G.REAR_BEAM, dz)
     T = shift(G.TRAVESANO, dz)
     FA = shift(G.FRONT_AXLE, dz)
-    v.tube(T, FA, P.PLETINA_ANCHO, C_STEEL)
-    sq = 10
-    v.poly([(T[0] - sq, T[1] - sq), (T[0] + sq, T[1] - sq), (T[0] + sq, T[1] + sq), (T[0] - sq, T[1] + sq)], stroke="#222", fill="#bdbdbd", w=0.2)
-    v.poly([T, (T[0] + (FA[0] - T[0]) * 0.28 + 12, T[1] + (FA[1] - T[1]) * 0.28 + 15), (T[0] + (FA[0] - T[0]) * 0.28 - 8, T[1] + (FA[1] - T[1]) * 0.28 - 20)], stroke=C_RUN, fill="#ffcc80", w=0.25)
-    wheel(v, FA, G.RN, tire=55, color=C_RUN, spokes=10)
-    return A, FA, T
+    eva_wheel(v, A)
+    _fork(v, B, A, -P.PATA_TRASERA_ANGULO)
+    eva_wheel(v, FA)
+    _fork(v, T, FA, P.PATA_DELANTERA_ANGULO)
+    for p in (pin_r, pin_f):
+        v.circle(p, 5, stroke="#b71c1c", fill="#e53935", w=0.15)
+    return A, FA, T, B
 
 
 def board_side(v, dz=0.0):
     """patineta + sillín. Devuelve puntos útiles."""
     lat, n, tilt, theta = X._arm_geometry()
-    piv = G.from_rear_local((-(22 + 14), 115 + 40))
+    piv = G.from_rear_local((-(22 + 14), G.REAR_BRACKET_LEN + 5 + 40))
     piv = shift(piv, dz)
     deck_bot = P.RUEDITA_DIAM / 2 + (P.RUEDITA_DIAM / 2 + 6 + 8)
     deck_top = deck_bot + P.TABLA_ALTO
@@ -200,7 +221,8 @@ def board_side(v, dz=0.0):
     cx = king_x + (P.TABLA_FONDO / 2 - 40)
     x0, x1 = cx - P.TABLA_FONDO / 2, cx + P.TABLA_FONDO / 2
     # abrazadera pivote
-    loc = [(22, 115), (22, 195), (-22, 195), (-50, 170), (-50, 140), (-22, 115)]
+    L0 = G.REAR_BRACKET_LEN + 5
+    loc = [(22, L0), (22, L0 + 80), (-22, L0 + 80), (-50, L0 + 55), (-50, L0 + 25), (-22, L0)]
     v.poly([shift(G.from_rear_local(q), dz) for q in loc], stroke=C_BOARD, fill="#bbdefb", w=0.3)
     # ruedas y horquillas
     wx = cx + 100
@@ -277,28 +299,27 @@ def build():
     v1 = View(60, 138)
     v1.line((-460, 0), (1050, 0), "#9e9e9e", 0.4)
     H, HB = stroller_side(v1, dz, orig_dash=True)
-    A, FA, T = running_kit_side(v1, dz)
+    A, FA, T, B = running_kit_side(v1, dz)
     v1.line((P.MANILLAR_X, P.MANILLAR_Z + dz), (P.MANILLAR_X + 120, P.MANILLAR_Z + dz - 220), "#fb8c00", 0.35, dash="0.8,0.5")
     v1.text((858, 830), "correa de", C_RUN, 2.2, "end")
     v1.text((858, 795), "muñeca", C_RUN, 2.2, "end")
     v1.text((-440, 1230), "1 · VISTA LATERAL — MODO TROTE (3 ruedas)", "#111", 4, weight="bold")
     v1.text((-440, 1170), "patineta, hamaca y bandeja desmontadas", "#555", 2.4)
     v1.text((-440, 1120), "ruedas originales quedan en el aire", "#555", 2.4)
-    pa = G.from_rear_local(X.rear_arm_geometry()[0])
-    v1.callout(shift(G.REAR_BRACKET_CENTER, dz), (900, 640), "soporte brazo", C_RUN)
-    v1.text((908, 600), "trasero (impreso)", C_RUN, 2.3)
-    v1.callout(((pa[0] + A[0]) / 2, (pa[1] + dz + A[1]) / 2), (900, 500), "brazo pletina", C_STEEL)
-    v1.text((908, 460), "acero 30x5", C_STEEL, 2.3)
-    v1.callout(A, (900, 360), f"eje Ø{P.RUEDA_RUNNING_BUJE:.0f} pasante", C_STEEL)
-    v1.callout((A[0] + 95, A[1] + 95), (900, 250), 'rueda 12" Ø305', C_RUN)
-    v1.callout(shift(G.REAR_HUB, dz), (900, 120), "rueda original", "#78909c")
-    v1.text((908, 80), "(en el aire)", "#78909c", 2.3)
+    v1.callout(shift(G.REAR_BRACKET_CENTER, dz), (900, 680), "soporte con silla", C_RUN)
+    v1.text((908, 640), "(fijo en el coche)", C_RUN, 2.3)
+    v1.callout(B, (900, 560), "pasador de bola", "#c62828")
+    v1.text((908, 520), "= enclachar módulo", "#c62828", 2.3)
+    v1.callout(((B[0] + A[0]) / 2, (B[1] + A[1]) / 2), (900, 420), "horquilla 2 pletinas", C_STEEL)
+    v1.callout((A[0] + 100, A[1] + 100), (900, 300), 'rueda EVA 12" maciza', C_RUN)
+    v1.callout(shift(G.REAR_HUB, dz), (900, 150), "rueda original", "#78909c")
+    v1.text((908, 110), "(en el aire)", "#78909c", 2.3)
     v1.callout(shift(G.FRONT_BRACKET_CENTER, dz), (-280, 780), "soporte travesaño", C_RUN, "end")
     v1.text((-288, 740), "(impreso)", C_RUN, 2.3, "end")
-    v1.callout(T, (-280, 670), "travesaño 20x20", C_STEEL, "end")
+    v1.callout(T, (-280, 670), "travesaño + pasador", C_STEEL, "end")
     v1.callout(((T[0] + FA[0]) / 2, (T[1] + FA[1]) / 2), (-280, 570), "horquilla 2", C_STEEL, "end")
     v1.text((-288, 530), "pletinas 30x5", C_STEEL, 2.3, "end")
-    v1.callout(FA, (-280, 440), 'rueda fija 12"', C_RUN, "end")
+    v1.callout(FA, (-280, 440), 'rueda EVA 12" fija', C_RUN, "end")
     v1.dim((FA[0], 0), (A[0], 0), -120, f"entre ejes {A[0]-FA[0]:.0f}  ·  largo total {P.MANILLAR_X + 16 - FA[0] + G.RN:.0f}")
     v1.dim((870, 0), (870, P.MANILLAR_Z + dz + 16), 0, f"altura manillar {P.MANILLAR_Z + dz + 16:.0f}", vertical=True)
     v1.dim((G.REAR_HUB[0] - 150, 0), (G.REAR_HUB[0] - 150, dz), 0, f"{dz:.0f}", vertical=True)
@@ -374,42 +395,40 @@ def build():
     v3.dim((-G.RF0, -yW), (-G.RF0, yW), -60, f"ancho coche {P.ANCHO_CHASIS:.0f}", vertical=True)
 
     # ---------------- VISTA 4: trasera modo trote
-    p1, p2, ax, d, hx, hy = X.rear_arm_geometry()
+    hy = 25
     v4 = View(112, 278)
     v4.text((-1000, 1020), "4 · VISTA TRASERA", "#111", 3.4, weight="bold")
     v4.text((-1000, 970), "MODO TROTE", "#111", 3.4, weight="bold")
-    v4.line((-440, 0), (440, 0), "#9e9e9e", 0.4)
+    v4.line((-460, 0), (460, 0), "#9e9e9e", 0.4)
     zH = G.HINGE[1] + dz
     zbr0 = G.REAR_LEG_BOT[1] + dz
-    for s in (1, -1):
-        y = s * leg
+    zb = G.REAR_BEAM[1] + dz
+    YW = G.REAR_WHEEL_Y
+    half_beam = YW + P.BUJE_ANCHO / 2 + P.PLETINA_ESPESOR + 8
+    v4.rect(-half_beam, zb - 10, half_beam, zb + 10, stroke="#222", fill="#bdbdbd", w=0.2)
+    for s_ in (1, -1):
+        y = s_ * leg
         v4.tube((y, zbr0), (y, zH))
-        v4.tube((y, zH), (s * (yW - 5), P.MANILLAR_Z + dz))
-        # rueda original (en el aire)
-        v4.rect(s * (leg + 8), dz, s * (leg + 48), dz + 2 * G.RR0, stroke=C_FRAME, fill="none", w=0.25, dash="1,0.8")
-        # soporte
+        v4.tube((y, zH), (s_ * (yW - 5), P.MANILLAR_Z + dz))
+        v4.rect(s_ * (leg + 8), dz, s_ * (leg + 48), dz + 2 * G.RR0, stroke=C_FRAME, fill="none", w=0.25, dash="1,0.8")
         v4.rect(y - hy, zbr0, y + hy, zbr0 + G.REAR_BRACKET_LEN * math.cos(math.radians(P.PATA_TRASERA_ANGULO)), stroke=C_RUN, fill="#ffcc80", w=0.3)
-        # pletina interior
-        yi = y - s * (hy + P.PLETINA_ESPESOR / 2)
-        v4.rect(yi - 2.5, G.RN, yi + 2.5, zbr0 + 40, stroke="#263238", fill=C_STEEL, w=0.15)
-        # separador + rueda
-        yw = yi - s * 2.5 + s * (P.SEPARADOR_TRASERO + 25 + 2.5)
-        v4.rect(yi + s * 2.5, G.RN - 14, yw - s * 25, G.RN + 14, stroke=C_RUN, fill="#ffcc80", w=0.2)
-        v4.rect(yw - 28, 0, yw + 28, 2 * G.RN, stroke=C_RUN, fill="#263238", w=0.3)
-        v4.rect(yw - 15, G.RN - 22, yw + 15, G.RN + 22, stroke="#9e9e9e", fill="#cfd8dc", w=0.15)
-        v4.rect(yi - s * 2.5 - s * 14, G.RN - 18, yi - s * 2.5, G.RN + 18, stroke=C_RUN, fill="#ffab40", w=0.15)  # collarín
-        if s == 1:
-            YW = yw
-    v4.tube((-YW - 45, G.RN), (YW + 45, G.RN), P.RUEDA_RUNNING_BUJE, "#37474f")
+        v4.circle((y, zb), 5, stroke="#b71c1c", fill="#e53935", w=0.15)
+        yw = s_ * YW
+        for e in (-1, 1):
+            yp = yw + e * (P.BUJE_ANCHO / 2 + P.PLETINA_ESPESOR / 2)
+            v4.rect(yp - 2.5, G.RN - 15, yp + 2.5, zb + 12, stroke="#263238", fill=C_STEEL, w=0.15)
+        v4.rect(yw - P.BUJE_ANCHO / 2, zb - 17, yw + P.BUJE_ANCHO / 2, zb + 17, stroke=C_RUN, fill="#ffcc80", w=0.2)
+        v4.rect(yw - P.RUEDA_RUNNING_ANCHO / 2, 0, yw + P.RUEDA_RUNNING_ANCHO / 2, 2 * G.RN, stroke=C_RUN, fill="#455a64", w=0.3)
+        v4.rect(yw - P.BUJE_ANCHO / 2 - 9, G.RN - 6, yw + P.BUJE_ANCHO / 2 + 9, G.RN + 6, stroke="#222", fill="#9e9e9e", w=0.12)
     v4.tube((-yW + 5, P.MANILLAR_Z + dz), (yW - 5, P.MANILLAR_Z + dz), 30, "#37474f")
     v4.rect(-165, 470 + dz, 165, 880 + dz, stroke=C_SOFT, fill=C_FAB, w=0.25)
     v4.path([("M", [-215, 820 + dz]), ("C", [-215, 1060 + dz, 215, 1060 + dz, 215, 820 + dz]), ("Z", [])], stroke="#78909c", fill="#b0bec5", w=0.25)
     v4.rect(-210, 170 + dz, 210, 320 + dz, stroke=C_SOFT, fill="url(#mesh)", w=0.25)
-    v4.dim((-YW, 0), (YW, 0), -70, f"trocha {2*YW:.0f}  ·  ancho total {2*YW+56:.0f}")
-    v4.callout((-(leg - hy - 3), G.RN + 60), (-560, 700), "pletina por DENTRO", C_STEEL, "end")
-    v4.text((-568, 655), "de la pata", C_STEEL, 2.3, "end")
-    v4.callout((-(YW - 60), G.RN), (-560, 560), "separador + collarín", C_RUN, "end")
-    v4.callout((-(YW + 40), G.RN), (-560, 440), "golilla + pasador R", "#37474f", "end")
+    v4.dim((-YW, 0), (YW, 0), -70, f"trocha {2*YW:.0f}  ·  ancho total {2*half_beam:.0f}")
+    v4.callout((-leg, zb), (-560, 760), "pasador de bola", "#c62828", "end")
+    v4.callout((-YW - P.BUJE_ANCHO / 2 - 3, zb - 80), (-560, 660), "módulo trasero:", C_STEEL, "end")
+    v4.text((-568, 615), "travesaño + 2 horquillas", C_STEEL, 2.3, "end")
+    v4.callout((-YW, G.RN - 100), (-560, 470), 'rueda EVA 12"', C_RUN, "end")
     v4.callout((-(leg + 28), dz + 150), (-560, 330), "rueda original (aire)", "#78909c", "end")
 
     # ---------------- notas + rótulo
@@ -420,8 +439,9 @@ def build():
         "• Geometría del Leona 2 ESTIMADA de la ficha técnica",
         "  (85,5 x 47 x 103,5 cm; ruedas 18 / 21 cm). Medir el",
         "  coche real y corregir cad/params.py antes de imprimir.",
-        "• Naranjo = impreso (kit running) · gris azulado = acero/alu",
+        "• Naranjo = impreso · gris azulado = acero/alu · rojo = pasador",
         "• Azul = patineta · verde = hamaca · morado = bandeja",
+        "• Módulos de ruedas: se enclachan con 4 pasadores de bola.",
         "• Trote: patineta y hamaca SIEMPRE desmontadas.",
         "• Paseo: la patineta funciona con ruedas originales o",
         "  con el kit running puesto (no se tocan).",
@@ -442,7 +462,7 @@ def build():
     add(f'<text x="{rx + 3}" y="{ry + 18}" font-size="2.8">Coche: Maxi-Cosi Leona 2</text>')
     add(f'<line x1="{rx}" y1="{ry + 21}" x2="{W - 5}" y2="{ry + 21}" stroke="#222" stroke-width="0.3"/>')
     add(f'<text x="{rx + 3}" y="{ry + 26}" font-size="2.6">Escala 1:10 · A3 · mm · generado por cad/plano.py</text>')
-    add(f'<text x="{rx + 3}" y="{ry + 30.5}" font-size="2.6">Rueda 12" Ø{P.RUEDA_RUNNING_DIAM:.0f} · elevación {P.ELEVACION:.0f} · eje Ø{P.RUEDA_RUNNING_BUJE:.0f}</text>')
+    add(f'<text x="{rx + 3}" y="{ry + 30.5}" font-size="2.6">Rueda EVA 12" Ø{P.RUEDA_RUNNING_DIAM:.0f} · elevación {P.ELEVACION:.0f} · eje M{P.EJE_RUEDA:.0f}</text>')
     # regla de escala
     sx, sy = 236, 286
     for k in range(6):

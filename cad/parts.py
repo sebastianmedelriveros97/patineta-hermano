@@ -69,95 +69,57 @@ def leg_clamp(ancho, fondo, radio, largo, feature=None, feature_side=-1, bolt_z=
 # ---------------------------------------------------------------------------
 # KIT RUNNING
 # ---------------------------------------------------------------------------
-def rear_arm_geometry():
-    """Posiciones (locales del soporte) de los 2 pernos M8 del brazo trasero y del eje."""
+def saddle_bracket(trasero):
+    """Soporte fijo (queda puesto en el coche) con una 'silla' en U abierta
+    donde se ENCLACHA el travesaño 20x20 del módulo de ruedas. Un pasador de
+    bola atraviesa la U y el tubo: botón -> saca pasador -> sale el módulo."""
     import geom
-    largo = geom.REAR_BRACKET_LEN
-    core, canal, hx, hy, by = _leg_core(P.PATA_TRASERA_ANCHO, P.PATA_TRASERA_FONDO, P.PATA_TRASERA_RADIO, largo)
-    ax = geom.to_rear_local(geom.REAR_AXLE)
-    p2 = [-hx - 30.0, 12.0]
-    for _ in range(20):
-        dx, dz = ax[0] - p2[0], ax[1] - p2[1]
-        n = math.hypot(dx, dz)
-        d = (dx / n, dz / n)
-        p1 = (p2[0] - 42 * d[0], p2[1] - 42 * d[1])
-        p2[0] += (-hx - 12.0) - p1[0]
-    return tuple(p1), tuple(p2), ax, d, hx, hy
-
-
-def rear_axle_bracket():
-    """Soporte del brazo trasero. Abraza la pata trasera apoyado sobre la
-    carcasa de la rueda original; atrás lleva 2 pernos M8 donde se atornilla
-    el brazo de pletina de acero (por el lado INTERIOR de la pata)."""
-    import geom
-    largo = geom.REAR_BRACKET_LEN
-    p1, p2, ax, d, hx, hy = rear_arm_geometry()
-    pad = hull(cyl_y(2 * hy, 13).translate((p1[0], 0, p1[1])),
-               cyl_y(2 * hy, 13).translate((p2[0], 0, p2[1])),
-               box(1, 2 * hy, 50, True).translate((-hx + 0.5, 0, 25)))
-    cut = cyl_y(400, M[8][0] / 2).translate((p1[0], 0, p1[1])) + cyl_y(400, M[8][0] / 2).translate((p2[0], 0, p2[1]))
-    a, b = leg_clamp(P.PATA_TRASERA_ANCHO, P.PATA_TRASERA_FONDO, P.PATA_TRASERA_RADIO, largo,
-                     feature=pad, feature_side=-1, bolt_z=[74, largo - 11], cut_extra=cut)
-    return a, b
-
-
-def axle_spacer(largo):
-    r = P.RUEDA_RUNNING_BUJE / 2
-    return cyl(largo, r + 6) - cyl(largo + 2, r + 0.3).translate((0, 0, -1))
-
-
-def axle_collar():
-    """Collarín con prisionero M5: fija la pletina sobre el eje Ø16 (uno a cada lado)."""
-    r = P.RUEDA_RUNNING_BUJE / 2
-    c = cyl(14, r + 10) - cyl(20, r + 0.25).translate((0, 0, -3))
-    c = c - cyl_x(40, M[5][0] / 2, center=False).translate((0, 0, 7))
-    n = M[5][1] + 0.4
-    c = c - box(4.6, n, 20).translate((r + 3, -n / 2, 7 - n / 2))
-    return c
-
-
-def front_leg_bracket():
-    """Abrazadera de pata delantera que sostiene el travesaño cuadrado."""
-    largo = 100
-    core, canal, hx, hy, by = _leg_core(P.PATA_DELANTERA_ANCHO, P.PATA_DELANTERA_FONDO, P.PATA_DELANTERA_RADIO, largo)
+    if trasero:
+        ancho, fondo, radio = P.PATA_TRASERA_ANCHO, P.PATA_TRASERA_FONDO, P.PATA_TRASERA_RADIO
+        largo, sz, side, bolts = geom.REAR_BRACKET_LEN, geom.REAR_SADDLE_Z, -1, [14, 44, geom.REAR_BRACKET_LEN - 11]
+    else:
+        ancho, fondo, radio = P.PATA_DELANTERA_ANCHO, P.PATA_DELANTERA_FONDO, P.PATA_DELANTERA_RADIO
+        largo, sz, side, bolts = geom.FRONT_BRACKET_LEN, geom.FRONT_SADDLE_Z, +1, [12, geom.FRONT_BRACKET_LEN - 12]
     t = P.TUBO_CUADRADO
-    tx = hx + t / 2 + 3
-    tz = largo / 2
-    boss = box(t + 12, 2 * hy, t + 14, True).translate((tx, 0, tz))
-    canal_t = box(t + 0.6, 400, t + 0.6, True).translate((tx, 0, tz))
-    lock = cyl(200, M[6][0] / 2, center=True).translate((tx, 0, tz))
-    a, b = leg_clamp(P.PATA_DELANTERA_ANCHO, P.PATA_DELANTERA_FONDO, P.PATA_DELANTERA_RADIO, largo,
-                     feature=boss, feature_side=+1, cut_extra=canal_t + lock)
+    tx = geom.SADDLE_OFFSET
+    core, canal, hx, hy, by = _leg_core(ancho, fondo, radio, largo)
+    boss = box(t + 14, 2 * hy, t + 16, True).translate((side * tx, 0, sz))
+    tg = t + 0.6
+    u = box(100, 400, tg, True).translate((side * (tx + 50), 0, sz)) + box(tg, 400, tg, True).translate((side * tx, 0, sz))
+    # boca con chaflán para que el tubo entre guiado
+    mouth = hull(box(0.1, 400, tg, True).translate((side * (tx + t / 2 + 7 - 0.05 - 3), 0, sz)),
+                 box(0.1, 400, tg + 6, True).translate((side * (tx + t / 2 + 7), 0, sz)))
+    pin = cyl(200, P.PASADOR_D / 2 + 0.2, center=True).translate((side * tx, 0, sz))
+    a, b = leg_clamp(ancho, fondo, radio, largo, feature=boss, feature_side=side, bolt_z=bolts,
+                     cut_extra=u + mouth + pin)
     return a, b
 
 
-def front_geometry():
-    rf = P.RUEDA_RUNNING_DIAM / 2
-    dx = P.RUEDA_DELANTERA_ADELANTE
-    dz = rf - P.TRAVESANO_ALTURA
-    lf = math.hypot(dx, dz)
-    ang = math.degrees(math.atan2(dz, dx))
-    return lf, ang
-
-
-def fork_spacer():
-    """Bloque central: va sobre el travesaño y separa las dos pletinas de la
-    horquilla al ancho del buje. Se imprime de lado."""
-    lf, ang = front_geometry()
-    w = P.BUJE_DELANTERO_ANCHO - 0.5
+def fork_block(trasero):
+    """Bloque de horquilla: se aprieta sobre el travesaño 20x20 (perno M6 que
+    atraviesa el tubo) y separa las 2 pletinas al ancho del buje."""
+    import geom
+    if trasero:
+        lf, ang, dx, dz = geom.fork(geom.REAR_BEAM, geom.REAR_AXLE)
+        rot = P.PATA_TRASERA_ANGULO
+    else:
+        lf, ang, dx, dz = geom.fork(geom.TRAVESANO, geom.FRONT_AXLE)
+        rot = -P.PATA_DELANTERA_ANGULO
+    w = P.BUJE_ANCHO - 0.5
     t = P.TUBO_CUADRADO
     ux, uz = math.cos(math.radians(ang)), math.sin(math.radians(ang))
     s1, s2 = 30, 66
-    tube_block = box(t + 14, w, t + 14, True).rotate((0, -P.PATA_DELANTERA_ANGULO, 0))
+    tube_block = box(t + 14, w, t + 14, True).rotate((0, rot, 0))
     tip = cyl_y(w, 15).translate((ux * (s2 + 4), 0, uz * (s2 + 4)))
     body = hull(tube_block, tip)
-    a = -P.PATA_DELANTERA_ANGULO
-    body = body - box(t + 0.6, 400, t + 0.6, True).rotate((0, a, 0))
-    body = body - cyl(200, M[6][0] / 2, center=True).rotate((0, a, 0))  # perno que atraviesa el tubo
-    for s in (s1, s2):
-        body = body - cyl_y(400, M[6][0] / 2).translate((ux * s, 0, uz * s))
-    # imprimir con una cara lateral sobre la cama
+    body = body - box(t + 0.6, 400, t + 0.6, True).rotate((0, rot, 0))
+    body = body - cyl(200, M[6][0] / 2, center=True).rotate((0, rot, 0))
+    for sd in (s1, s2):
+        body = body - cyl_y(400, M[6][0] / 2).translate((ux * sd, 0, uz * sd))
     return body.rotate((90, 0, 0))
+
+
+FORK_S1, FORK_S2 = 30, 66
 
 
 def bar_end_cap():

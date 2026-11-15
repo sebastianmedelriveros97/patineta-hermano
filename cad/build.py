@@ -12,8 +12,6 @@ from lib import export
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "stl")
 
-lf, ang = X.front_geometry()
-sep = P.SEPARADOR_TRASERO
 
 # (carpeta, archivo, cantidad, material, función)
 PIEZAS = [
@@ -22,14 +20,13 @@ PIEZAS = [
     ("00_pruebas", "prueba_manillar", 1, "PLA", lambda: X.test_round(P.MANILLAR_DIAM)),
     ("00_pruebas", "prueba_tubo_lateral_manillar", 1, "PLA", lambda: X.test_round(P.TUBO_LATERAL_MANILLAR_DIAM)),
 
-    ("01_kit_running", "soporte_brazo_trasero_A", 2, "PETG/ASA 100%", lambda: X.rear_axle_bracket()[0]),
-    ("01_kit_running", "soporte_brazo_trasero_B_tapa", 2, "PETG/ASA 60%", lambda: X.rear_axle_bracket()[1]),
-    ("01_kit_running", f"separador_eje_{int(sep)}mm", 2, "PETG 60%", lambda: X.axle_spacer(sep)),
-    ("01_kit_running", "collarin_eje", 4, "PETG 100%", X.axle_collar),
-    ("01_kit_running", "soporte_travesano_delantero_A", 2, "PETG/ASA 100%", lambda: X.front_leg_bracket()[0]),
-    ("01_kit_running", "soporte_travesano_delantero_B_tapa", 2, "PETG/ASA 60%", lambda: X.front_leg_bracket()[1]),
-    ("01_kit_running", "separador_horquilla", 1, "PETG/ASA 100%", X.fork_spacer),
-    ("01_kit_running", "tapon_tubo_cuadrado", 2, "TPU/PETG", X.bar_end_cap),
+    ("01_kit_running", "soporte_silla_trasero_A", 2, "PETG/ASA 100%", lambda: X.saddle_bracket(True)[0]),
+    ("01_kit_running", "soporte_silla_trasero_B_tapa", 2, "PETG/ASA 60%", lambda: X.saddle_bracket(True)[1]),
+    ("01_kit_running", "soporte_silla_delantero_A", 2, "PETG/ASA 100%", lambda: X.saddle_bracket(False)[0]),
+    ("01_kit_running", "soporte_silla_delantero_B_tapa", 2, "PETG/ASA 60%", lambda: X.saddle_bracket(False)[1]),
+    ("01_kit_running", "bloque_horquilla_trasera", 2, "PETG/ASA 100%", lambda: X.fork_block(True)),
+    ("01_kit_running", "bloque_horquilla_delantera", 1, "PETG/ASA 100%", lambda: X.fork_block(False)),
+    ("01_kit_running", "tapon_tubo_cuadrado", 4, "TPU/PETG", X.bar_end_cap),
 
     ("02_patineta", "baldosa_tabla_del_izq", 1, "PETG 40% giroide", lambda: X.deck_tile(0, 1)),
     ("02_patineta", "baldosa_tabla_del_der", 1, "PETG 40% giroide", lambda: X.deck_tile(1, 1)),
@@ -80,8 +77,6 @@ def main(only=None):
         f.write("| Carpeta | Archivo STL | Cant. | Material / relleno | Medidas (mm) | Cabe |\n|---|---|---|---|---|---|\n")
         for c, n, q, m, e, ok in rows:
             f.write(f"| {c} | `{n}.stl` | {q} | {m} | {e[0]:.0f} x {e[1]:.0f} x {e[2]:.0f} | {ok} |\n")
-        f.write(f"\n**Geometría horquilla delantera calculada:** distancia centro travesaño → eje delantero = "
-                f"**{lf:.0f} mm**, inclinación {ang:.1f}° (negativo = hacia abajo).\n")
 
 
 if __name__ == "__main__":
@@ -107,37 +102,51 @@ def _plantilla(nombre, titulo, holes, largo, nota):
     open(os.path.join(ROOT, "docs", nombre), "w").write(svg)
 
 
+def cortes():
+    """Medidas de metal derivadas de la geometría (se usan en docs y manual)."""
+    import geom
+    s1, s2 = X.FORK_S1, X.FORK_S2
+    start = 12
+    out = {}
+    for key, tube, axle in (("delantera", geom.TRAVESANO, geom.FRONT_AXLE), ("trasera", geom.REAR_BEAM, geom.REAR_AXLE)):
+        lf, ang, dx, dz = geom.fork(tube, axle)
+        out[key] = dict(largo=lf - start + 22, h1=s1 - start, h2=s2 - start, eje=lf - start, ang=ang)
+    out["trav_del"] = P.ANCHO_CHASIS + 60
+    out["trav_tras"] = 2 * (geom.REAR_WHEEL_Y + P.BUJE_ANCHO / 2 + P.PLETINA_ESPESOR + 8)
+    lat, n, tilt, theta = X._arm_geometry()
+    out["brazo"] = n - 16 - 6 - 8 - 8 - 25
+    out["trocha"] = 2 * geom.REAR_WHEEL_Y
+    out["ancho_total"] = 2 * (geom.REAR_WHEEL_Y + P.BUJE_ANCHO / 2 + P.PLETINA_ESPESOR + 8)
+    return out
+
+
 def extras():
     """Plantillas 1:1 de pletinas y medidas de corte de metales."""
-    import math
     import geom
-    lf, ang = X.front_geometry()
-    s1, s2 = 30, 66
-    start = 12
-    Lf = lf - start + 22
-    _plantilla("plantilla_pletina_horquilla_1a1.svg", f"Pletina HORQUILLA delantera {P.PLETINA_ANCHO:.0f}x{P.PLETINA_ESPESOR:.0f} (hacer 2)",
-               [(s1 - start, 6.5), (s2 - start, 6.5), (lf - start, P.EJE_DELANTERO + 0.5)], Lf,
-               f"Largo {Lf:.0f} mm. Agujeros M6 y eje Ø{P.EJE_DELANTERO+0.5:.1f}. En UNA pletina el eje como ranura de 16 mm para alinear.")
-    p1, p2, ax, d, hx, hy = X.rear_arm_geometry()
-    la = math.hypot(ax[0] - p1[0], ax[1] - p1[1])
-    l12 = math.hypot(p2[0] - p1[0], p2[1] - p1[1])
-    Lr = la + 15 + 20
-    _plantilla("plantilla_pletina_brazo_trasero_1a1.svg", f"Pletina BRAZO trasero {P.PLETINA_ANCHO:.0f}x{P.PLETINA_ESPESOR:.0f} (hacer 2)",
-               [(15, 8.5), (15 + l12, 8.5), (15 + la, P.RUEDA_RUNNING_BUJE + 0.5)], Lr,
-               f"Largo {Lr:.0f} mm. 2 agujeros M8 (Ø8,5) y eje Ø{P.RUEDA_RUNNING_BUJE+0.5:.1f}. Va por el lado INTERIOR de la pata.")
-    track = P.ANCHO_CHASIS - 2 * hy + 2 * (P.SEPARADOR_TRASERO + 50 + 25)
-    eje = track
-    travesano = P.ANCHO_CHASIS + 60
-    lat, n, tilt, theta = X._arm_geometry()
-    brazo = n - 16 - 6 - 8 - 8 - 25
-    txt = (f"- Eje trasero (acero liso Ø{P.RUEDA_RUNNING_BUJE:.0f}, SAE 1020/1045): **{eje:.0f} mm**; perforar Ø4 en cada punta para pasador R\n"
-           f"- Travesaño delantero (tubo 20x20): **{travesano:.0f} mm**\n"
-           f"- Pletinas horquilla 30x5: **2 x {Lf:.0f} mm** (ver `plantilla_pletina_horquilla_1a1.svg`)\n"
-           f"- Pletinas brazo trasero 30x5: **2 x {Lr:.0f} mm** (ver `plantilla_pletina_brazo_trasero_1a1.svg`)\n"
-           f"- Brazos patineta (tubo Ø20): **2 x ~{brazo:.0f} mm** (cortar 20 mm más largo y ajustar)\n"
-           f"- Poste asiento (tubo Ø25): **1 x 300 mm**, perforar Ø6,5 cada 25 mm para regular altura\n")
+    c = cortes()
+    for key, cant in (("delantera", 2), ("trasera", 4)):
+        f = c[key]
+        _plantilla(f"plantilla_pletina_horquilla_{key}_1a1.svg",
+                   f"Pletina HORQUILLA {key.upper()} {P.PLETINA_ANCHO:.0f}x{P.PLETINA_ESPESOR:.0f} (hacer {cant})",
+                   [(f["h1"], 6.5), (f["h2"], 6.5), (f["eje"], P.EJE_RUEDA + 0.5)], f["largo"],
+                   f"Largo {f['largo']:.0f} mm. 2 agujeros M6 (Ø6,5) y eje Ø{P.EJE_RUEDA + 0.5:.1f}. "
+                   f"En UNA pletina de cada horquilla el eje como ranura de 16 mm (alineación).")
+    for old in ("plantilla_pletina_horquilla_1a1.svg", "plantilla_pletina_brazo_trasero_1a1.svg"):
+        p = os.path.join(ROOT, "docs", old)
+        if os.path.exists(p):
+            os.remove(p)
+    fd, ft = c["delantera"], c["trasera"]
+    txt = (f"- Travesaño delantero (tubo 20x20x2): **{c['trav_del']:.0f} mm** — perforar Ø6,5 vertical donde caen los 2 pasadores y el bloque\n"
+           f"- Travesaño trasero (tubo 20x20x2): **{c['trav_tras']:.0f} mm** — ídem (2 pasadores + 2 bloques)\n"
+           f"- Pletinas horquilla delantera 30x5: **2 x {fd['largo']:.0f} mm** (`plantilla_pletina_horquilla_delantera_1a1.svg`)\n"
+           f"- Pletinas horquillas traseras 30x5: **4 x {ft['largo']:.0f} mm** (`plantilla_pletina_horquilla_trasera_1a1.svg`)\n"
+           f"- Brazos patineta (tubo Ø20): **2 x ~{c['brazo']:.0f} mm** (cortar 20 mm más largo y ajustar)\n"
+           f"- Poste asiento (tubo Ø25): **1 x 300 mm**, perforar Ø6,5 cada 25 mm para regular altura\n"
+           f"\nTrocha trasera {c['trocha']:.0f} mm · ancho total modo trote ≈ {c['ancho_total']:.0f} mm\n")
     open(os.path.join(ROOT, "docs", "cortes_metal.md"), "w").write("# Cortes de metal (generado por cad/build.py)\n\n" + txt)
     print(txt)
+    for m in geom.checks():
+        print(m)
 
 
 if __name__ == "__main__" and len(sys.argv) == 1:

@@ -55,16 +55,21 @@ MANILLAR_Z = 1010.0
 # ---------------------------------------------------------------------------
 # KIT RUNNING (3 ruedas)
 # ---------------------------------------------------------------------------
-RUEDA_RUNNING_DIAM = 305.0   # rueda 12" (12 1/2 x 2 1/4) — traseras y delantera
-RUEDA_RUNNING_BUJE = 16.0    # eje trasero pasante: acero liso Ø16 (5/8") — igual al rodamiento de la rueda
-EJE_DELANTERO = 10.0         # eje rueda delantera (M10 / 3/8")
-BUJE_DELANTERO_ANCHO = 80.0  # largo del buje delantero entre tuercas (O.L.D.) [MEDIR rueda]
-ELEVACION = 48.0             # cuánto sube el coche en modo trote (las ruedas originales quedan en el aire)
-EJE_TRASERO_ATRAS = 135.0    # el eje nuevo va detrás del eje original para no tocar la rueda original
-SEPARADOR_TRASERO = 95.0     # separador entre brazo trasero (lado interior de la pata) y la rueda nueva,
-                             # para que la rueda nueva quede por fuera de la rueda original
+# Ruedas: 3 x rueda EVA (espuma maciza, SIN cámara) aro 12", tipo repuesto de bicicleta de
+# equilibrio. Livianas (~0,5 kg c/u) y no se pinchan. Las 3 ruedas son iguales.
+RUEDA_RUNNING_DIAM = 300.0   # [MEDIR rueda] diámetro exterior EVA 12" (≈ 29–30 cm)
+RUEDA_RUNNING_ANCHO = 55.0   # [MEDIR rueda] ancho del neumático EVA
+EJE_RUEDA = 10.0             # [MEDIR rueda] eje roscado de la rueda (M10 típico; si es M8 pon 8)
+BUJE_ANCHO = 80.0            # [MEDIR rueda] ancho del buje entre las caras donde apoyan las tuercas
+ELEVACION = 46.0             # cuánto sube el coche en modo trote (las ruedas originales quedan en el aire)
+EJE_TRASERO_ATRAS = 135.0    # el eje trasero nuevo va detrás del eje original
+RUEDA_ORIG_EXTERIOR = 285.0  # [MEDIR] distancia del centro del coche a la cara EXTERIOR de la rueda trasera original
 
-TUBO_CUADRADO = 20.0         # travesaño delantero: tubo aluminio/acero 20x20
+# Enganche rápido ("enclachar"): pasadores de bola con botón (quick release pin)
+PASADOR_D = 6.0              # kit trote: pasador de bola Ø6 x 40 mm (4 unidades)
+PASADOR_PATINETA_D = 8.0     # patineta: pasador de bola Ø8 x 50 mm (2 unidades)
+
+TUBO_CUADRADO = 20.0         # travesaños delantero y trasero: tubo cuadrado 20x20x2
 PLETINA_ANCHO = 30.0         # horquilla: pletina de acero 30x5
 PLETINA_ESPESOR = 5.0
 TRAVESANO_ALTURA = 335.0     # altura del travesaño delantero sobre el suelo, ya convertido
