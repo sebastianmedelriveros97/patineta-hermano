@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" font-family="sans-serif" font-size="14">
+  <rect width="1000" height="560" fill="#fff"/>
+  <text x="20" y="28" font-size="20" font-weight="bold">Esquema lateral (no a escala exacta) — coche hacia la izquierda</text>
+  <line x1="20" y1="500" x2="980" y2="500" stroke="#999" stroke-width="2"/>
+
+  <!-- chasis coche -->
+  <g stroke="#555" stroke-width="7" fill="none" stroke-linecap="round">
+    <line x1="300" y1="420" x2="420" y2="230"/>   <!-- pata delantera -->
+    <line x1="560" y1="440" x2="470" y2="250"/>   <!-- pata trasera -->
+    <line x1="470" y1="250" x2="640" y2="120"/>   <!-- manillar lateral -->
+  </g>
+  <circle cx="640" cy="120" r="10" fill="#555"/>
+  <path d="M330 300 Q340 210 420 200 L520 140 L540 160 L450 230 Q420 300 330 320 Z" fill="#cfd8dc" stroke="#78909c"/>
+  <text x="360" y="180" fill="#455a64">asiento bebé (1 año)</text>
+  <!-- ruedas originales (levantadas) -->
+  <circle cx="300" cy="450" r="38" fill="none" stroke="#bbb" stroke-dasharray="5,4" stroke-width="3"/>
+  <circle cx="560" cy="460" r="42" fill="none" stroke="#bbb" stroke-dasharray="5,4" stroke-width="3"/>
+  <text x="225" y="545" fill="#999" font-size="12">ruedas originales quedan ~5 cm en el aire</text>
+
+  <!-- KIT RUNNING -->
+  <g fill="none" stroke="#e65100" stroke-width="4">
+    <circle cx="545" cy="440" r="60"/>
+    <circle cx="160" cy="440" r="60"/>
+    <line x1="300" y1="395" x2="160" y2="440" stroke-width="6"/>
+  </g>
+  <rect x="290" y="385" width="22" height="22" fill="#e65100"/>
+  <rect x="536" y="395" width="26" height="40" fill="#e65100"/>
+  <text x="40" y="335" fill="#e65100">rueda delantera fija 12"</text>
+  <text x="40" y="353" fill="#e65100">horquilla: 2 pletinas acero 30x5</text>
+  <text x="215" y="425" fill="#e65100" font-size="12">travesaño 20x20</text>
+  <text x="575" y="525" fill="#e65100">2 ruedas 12" en eje pasante M12</text>
+
+  <!-- PATINETA -->
+  <g stroke="#1565c0" fill="none" stroke-width="5">
+    <line x1="545" y1="330" x2="720" y2="430"/>
+    <rect x="700" y="430" width="200" height="16" fill="#90caf9"/>
+    <circle cx="880" cy="472" r="26"/>
+    <line x1="770" y1="430" x2="770" y2="330"/>
+    <ellipse cx="770" cy="325" rx="45" ry="8" fill="#90caf9"/>
+  </g>
+  <rect x="533" y="318" width="24" height="26" fill="#1565c0"/>
+  <text x="790" y="405" fill="#1565c0">patineta + sillín</text>
+  <text x="640" y="400" fill="#1565c0" font-size="12">brazos Ø20 + pivotes</text>
+
+  <!-- HAMACA -->
+  <path d="M615 145 Q700 300 770 318 Q700 360 548 335" fill="none" stroke="#2e7d32" stroke-width="5" stroke-dasharray="10,4"/>
+  <text x="690" y="230" fill="#2e7d32">hamaca de lona (modo siesta)</text>
+  <text x="690" y="248" fill="#2e7d32" font-size="12">arriba: tubos del manillar · abajo: abrazaderas pata</text>
+  <text x="690" y="264" fill="#2e7d32" font-size="12">el peso de la niña lo recibe el sillín</text>
+
+  <!-- BANDEJA -->
+  <rect x="560" y="98" width="90" height="10" fill="#6a1b9a"/>
+  <rect x="575" y="80" width="10" height="18" fill="#6a1b9a"/>
+  <text x="440" y="75" fill="#6a1b9a">bandeja tablet + 2 portavasos (sobre el manillar)</text>
+</svg>
