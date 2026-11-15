@@ -69,18 +69,35 @@ def leg_clamp(ancho, fondo, radio, largo, feature=None, feature_side=-1, bolt_z=
 # ---------------------------------------------------------------------------
 # KIT RUNNING
 # ---------------------------------------------------------------------------
-def rear_axle_bracket():
-    """Soporte del eje trasero pasante. Se monta en cada pata trasera,
-    apoyando su cara inferior sobre la carcasa de la rueda original."""
-    largo = 110
+def rear_arm_geometry():
+    """Posiciones (locales del soporte) de los 2 pernos M8 del brazo trasero y del eje."""
+    import geom
+    largo = geom.REAR_BRACKET_LEN
     core, canal, hx, hy, by = _leg_core(P.PATA_TRASERA_ANCHO, P.PATA_TRASERA_FONDO, P.PATA_TRASERA_RADIO, largo)
-    r_eje = P.RUEDA_RUNNING_BUJE / 2
-    ax = -(hx + r_eje + 4)
-    az = largo / 2
-    boss = cyl_y(2 * hy, r_eje + 9).translate((ax, 0, az))
-    bore = cyl_y(400, r_eje + 0.25).translate((ax, 0, az))
+    ax = geom.to_rear_local(geom.REAR_AXLE)
+    p2 = [-hx - 30.0, 12.0]
+    for _ in range(20):
+        dx, dz = ax[0] - p2[0], ax[1] - p2[1]
+        n = math.hypot(dx, dz)
+        d = (dx / n, dz / n)
+        p1 = (p2[0] - 42 * d[0], p2[1] - 42 * d[1])
+        p2[0] += (-hx - 12.0) - p1[0]
+    return tuple(p1), tuple(p2), ax, d, hx, hy
+
+
+def rear_axle_bracket():
+    """Soporte del brazo trasero. Abraza la pata trasera apoyado sobre la
+    carcasa de la rueda original; atrás lleva 2 pernos M8 donde se atornilla
+    el brazo de pletina de acero (por el lado INTERIOR de la pata)."""
+    import geom
+    largo = geom.REAR_BRACKET_LEN
+    p1, p2, ax, d, hx, hy = rear_arm_geometry()
+    pad = hull(cyl_y(2 * hy, 13).translate((p1[0], 0, p1[1])),
+               cyl_y(2 * hy, 13).translate((p2[0], 0, p2[1])),
+               box(1, 2 * hy, 50, True).translate((-hx + 0.5, 0, 25)))
+    cut = cyl_y(400, M[8][0] / 2).translate((p1[0], 0, p1[1])) + cyl_y(400, M[8][0] / 2).translate((p2[0], 0, p2[1]))
     a, b = leg_clamp(P.PATA_TRASERA_ANCHO, P.PATA_TRASERA_FONDO, P.PATA_TRASERA_RADIO, largo,
-                     feature=boss, feature_side=-1, cut_extra=bore)
+                     feature=pad, feature_side=-1, bolt_z=[74, largo - 11], cut_extra=cut)
     return a, b
 
 
@@ -90,7 +107,7 @@ def axle_spacer(largo):
 
 
 def axle_collar():
-    """Collarín de respaldo (el ajuste real lo hacen tuercas M12 autoblocantes)."""
+    """Collarín con prisionero M5: fija la pletina sobre el eje Ø16 (uno a cada lado)."""
     r = P.RUEDA_RUNNING_BUJE / 2
     c = cyl(14, r + 10) - cyl(20, r + 0.25).translate((0, 0, -3))
     c = c - cyl_x(40, M[5][0] / 2, center=False).translate((0, 0, 7))
@@ -171,7 +188,7 @@ def board_leg_pivot():
     return a, b
 
 
-ARM_ADELANTE = 300.0   # distancia horizontal pivote-pata -> yugo
+ARM_ADELANTE = 240.0   # distancia horizontal pivote-pata -> yugo
 ARM_CAIDA = 145.0      # diferencia de altura pivote-pata -> pivote yugo
 
 

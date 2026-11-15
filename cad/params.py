@@ -29,7 +29,7 @@ PATA_TRASERA_RADIO = 8.0    # [MEDIR] radio de las esquinas del óvalo
 PATA_DELANTERA_ANCHO = 22.0  # [MEDIR]
 PATA_DELANTERA_FONDO = 30.0  # [MEDIR]
 PATA_DELANTERA_RADIO = 8.0   # [MEDIR]
-PATA_DELANTERA_ANGULO = 12.0 # [MEDIR] inclinación de la pata delantera respecto a la vertical (grados)
+PATA_DELANTERA_ANGULO = 39.0 # [MEDIR] inclinación de la pata delantera respecto a la vertical (grados)
 
 MANILLAR_DIAM = 28.0         # [MEDIR] diámetro del manillar CON la espuma
 TUBO_LATERAL_MANILLAR_DIAM = 26.0  # [MEDIR] tubos laterales del manillar (anclaje hamaca)
@@ -42,20 +42,33 @@ RUEDA_DELANTERA_ORIG = 180.0 # diámetro rueda delantera original (ficha: 18 cm)
 # bicicleta (1 mm) que da agarre y protege la pintura del coche
 HOLGURA_GOMA = 1.0
 
+# Geometría lateral del coche (estimada de la ficha: largo 855, alto 1035).
+# Origen = centro de la rueda delantera original, X hacia ATRÁS, Z hacia arriba.
+# [MEDIR] con el coche armado sobre el suelo y una huincha.
+EJE_TRASERO_ORIG_X = 560.0   # distancia horizontal centro rueda delantera -> centro rueda trasera
+PATA_TRASERA_ANGULO = 29.0   # [MEDIR] inclinación pata trasera respecto a la vertical (grados)
+PATA_TRASERA_TOPE_Z = 150.0  # [MEDIR] altura de la parte superior de la carcasa de la rueda trasera
+PATA_DELANTERA_TOPE_Z = 225.0  # [MEDIR] altura de la parte superior del giratorio de la rueda delantera
+MANILLAR_X = 750.0
+MANILLAR_Z = 1010.0
+
 # ---------------------------------------------------------------------------
 # KIT RUNNING (3 ruedas)
 # ---------------------------------------------------------------------------
 RUEDA_RUNNING_DIAM = 305.0   # rueda 12" (12 1/2 x 2 1/4) — traseras y delantera
-RUEDA_RUNNING_BUJE = 12.0    # eje trasero pasante: barra M12 (ajustar al rodamiento)
+RUEDA_RUNNING_BUJE = 16.0    # eje trasero pasante: acero liso Ø16 (5/8") — igual al rodamiento de la rueda
 EJE_DELANTERO = 10.0         # eje rueda delantera (M10 / 3/8")
 BUJE_DELANTERO_ANCHO = 80.0  # largo del buje delantero entre tuercas (O.L.D.) [MEDIR rueda]
-SEPARADOR_TRASERO = 55.0     # distancia soporte->rueda para no chocar la rueda original
-                             # (si sacas las ruedas originales usa 10)
+ELEVACION = 48.0             # cuánto sube el coche en modo trote (las ruedas originales quedan en el aire)
+EJE_TRASERO_ATRAS = 135.0    # el eje nuevo va detrás del eje original para no tocar la rueda original
+SEPARADOR_TRASERO = 95.0     # separador entre brazo trasero (lado interior de la pata) y la rueda nueva,
+                             # para que la rueda nueva quede por fuera de la rueda original
 
 TUBO_CUADRADO = 20.0         # travesaño delantero: tubo aluminio/acero 20x20
 PLETINA_ANCHO = 30.0         # horquilla: pletina de acero 30x5
 PLETINA_ESPESOR = 5.0
-TRAVESANO_ALTURA = 200.0     # altura del travesaño delantero sobre el suelo, ya convertido
+TRAVESANO_ALTURA = 335.0     # altura del travesaño delantero sobre el suelo, ya convertido
+                             # (debe quedar SOBRE la horquilla giratoria de la rueda original)
 RUEDA_DELANTERA_ADELANTE = 230.0  # cuánto adelanta el eje delantero respecto al travesaño
 
 # ---------------------------------------------------------------------------

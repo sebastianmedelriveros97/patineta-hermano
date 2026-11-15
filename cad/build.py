@@ -22,8 +22,8 @@ PIEZAS = [
     ("00_pruebas", "prueba_manillar", 1, "PLA", lambda: X.test_round(P.MANILLAR_DIAM)),
     ("00_pruebas", "prueba_tubo_lateral_manillar", 1, "PLA", lambda: X.test_round(P.TUBO_LATERAL_MANILLAR_DIAM)),
 
-    ("01_kit_running", "soporte_eje_trasero_A", 2, "PETG/ASA 100%", lambda: X.rear_axle_bracket()[0]),
-    ("01_kit_running", "soporte_eje_trasero_B_tapa", 2, "PETG/ASA 60%", lambda: X.rear_axle_bracket()[1]),
+    ("01_kit_running", "soporte_brazo_trasero_A", 2, "PETG/ASA 100%", lambda: X.rear_axle_bracket()[0]),
+    ("01_kit_running", "soporte_brazo_trasero_B_tapa", 2, "PETG/ASA 60%", lambda: X.rear_axle_bracket()[1]),
     ("01_kit_running", f"separador_eje_{int(sep)}mm", 2, "PETG 60%", lambda: X.axle_spacer(sep)),
     ("01_kit_running", "collarin_eje", 4, "PETG 100%", X.axle_collar),
     ("01_kit_running", "soporte_travesano_delantero_A", 2, "PETG/ASA 100%", lambda: X.front_leg_bracket()[0]),
@@ -89,37 +89,53 @@ if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else None)
 
 
+def _plantilla(nombre, titulo, holes, largo, nota):
+    w = P.PLETINA_ANCHO
+    circ = "".join(f'<circle cx="{x:.1f}" cy="{w/2}" r="{d/2:.2f}" fill="none" stroke="red" stroke-width="0.3"/>'
+                   f'<line x1="{x-3:.1f}" y1="{w/2}" x2="{x+3:.1f}" y2="{w/2}" stroke="red" stroke-width="0.15"/>'
+                   f'<text x="{x:.1f}" y="{w+6}" font-size="3.5" text-anchor="middle" font-family="sans-serif">{x:.0f}</text>'
+                   for x, d in holes)
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{largo+20:.0f}mm" height="{w+60}mm" viewBox="-10 -40 {largo+20:.0f} {w+60}">
+<rect x="-10" y="-40" width="{largo+20:.0f}" height="{w+60}" fill="white"/>
+<rect x="0" y="0" width="{largo:.1f}" height="{w}" fill="none" stroke="black" stroke-width="0.3"/>
+<line x1="0" y1="{w/2}" x2="{largo:.1f}" y2="{w/2}" stroke="gray" stroke-width="0.15" stroke-dasharray="2,2"/>
+{circ}
+<text x="0" y="-28" font-size="5" font-family="sans-serif">{titulo} — ESCALA 1:1 (imprimir al 100 %, comprobar la regla de 100 mm)</text>
+<text x="0" y="-20" font-size="3.6" font-family="sans-serif">{nota}</text>
+<line x1="0" y1="-12" x2="100" y2="-12" stroke="black" stroke-width="0.5"/><text x="102" y="-11" font-size="4" font-family="sans-serif">100 mm</text>
+</svg>'''
+    open(os.path.join(ROOT, "docs", nombre), "w").write(svg)
+
+
 def extras():
-    """Plantilla 1:1 de la pletina y medidas de corte de metales."""
+    """Plantillas 1:1 de pletinas y medidas de corte de metales."""
     import math
+    import geom
     lf, ang = X.front_geometry()
     s1, s2 = 30, 66
     start = 12
-    L = lf - start + 22
-    w = P.PLETINA_ANCHO
-    h1, h2, ax = s1 - start, s2 - start, lf - start
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{L+20}mm" height="{w+60}mm" viewBox="-10 -40 {L+20} {w+60}">
-<rect x="0" y="0" width="{L:.1f}" height="{w}" fill="none" stroke="black" stroke-width="0.3"/>
-<line x1="0" y1="{w/2}" x2="{L:.1f}" y2="{w/2}" stroke="gray" stroke-width="0.15" stroke-dasharray="2,2"/>
-<circle cx="{h1}" cy="{w/2}" r="3.25" fill="none" stroke="red" stroke-width="0.3"/>
-<circle cx="{h2}" cy="{w/2}" r="3.25" fill="none" stroke="red" stroke-width="0.3"/>
-<circle cx="{ax:.1f}" cy="{w/2}" r="{P.EJE_DELANTERO/2+0.25}" fill="none" stroke="red" stroke-width="0.3"/>
-<text x="0" y="-28" font-size="5" font-family="sans-serif">Pletina horquilla {w:.0f}x{P.PLETINA_ESPESOR:.0f} mm  -  ESCALA 1:1 (imprimir al 100%, verificar regla de 100 mm)</text>
-<text x="0" y="-20" font-size="4" font-family="sans-serif">Largo {L:.0f} mm. Agujeros M6 a {h1:.0f} y {h2:.0f} mm; eje Ø{P.EJE_DELANTERO+0.5:.1f} a {ax:.0f} mm del extremo. Hacer 2 (en una, el eje como ranura de 16 mm para alinear).</text>
-<line x1="0" y1="-12" x2="100" y2="-12" stroke="black" stroke-width="0.5"/>
-<text x="102" y="-11" font-size="4" font-family="sans-serif">100 mm</text>
-</svg>'''
-    open(os.path.join(ROOT, "docs", "plantilla_pletina_horquilla_1a1.svg"), "w").write(svg)
-    eje = P.ANCHO_CHASIS + 2 * (P.SEPARADOR_TRASERO + 50 + 25)
+    Lf = lf - start + 22
+    _plantilla("plantilla_pletina_horquilla_1a1.svg", f"Pletina HORQUILLA delantera {P.PLETINA_ANCHO:.0f}x{P.PLETINA_ESPESOR:.0f} (hacer 2)",
+               [(s1 - start, 6.5), (s2 - start, 6.5), (lf - start, P.EJE_DELANTERO + 0.5)], Lf,
+               f"Largo {Lf:.0f} mm. Agujeros M6 y eje Ø{P.EJE_DELANTERO+0.5:.1f}. En UNA pletina el eje como ranura de 16 mm para alinear.")
+    p1, p2, ax, d, hx, hy = X.rear_arm_geometry()
+    la = math.hypot(ax[0] - p1[0], ax[1] - p1[1])
+    l12 = math.hypot(p2[0] - p1[0], p2[1] - p1[1])
+    Lr = la + 15 + 20
+    _plantilla("plantilla_pletina_brazo_trasero_1a1.svg", f"Pletina BRAZO trasero {P.PLETINA_ANCHO:.0f}x{P.PLETINA_ESPESOR:.0f} (hacer 2)",
+               [(15, 8.5), (15 + l12, 8.5), (15 + la, P.RUEDA_RUNNING_BUJE + 0.5)], Lr,
+               f"Largo {Lr:.0f} mm. 2 agujeros M8 (Ø8,5) y eje Ø{P.RUEDA_RUNNING_BUJE+0.5:.1f}. Va por el lado INTERIOR de la pata.")
+    track = P.ANCHO_CHASIS - 2 * hy + 2 * (P.SEPARADOR_TRASERO + 50 + 25)
+    eje = track
     travesano = P.ANCHO_CHASIS + 60
     lat, n, tilt, theta = X._arm_geometry()
     brazo = n - 16 - 6 - 8 - 8 - 25
-    txt = (f"- Eje trasero (barra roscada M12): **{eje:.0f} mm** (ajusta tras presentar ruedas)\n"
+    txt = (f"- Eje trasero (acero liso Ø{P.RUEDA_RUNNING_BUJE:.0f}, SAE 1020/1045): **{eje:.0f} mm**; perforar Ø4 en cada punta para pasador R\n"
            f"- Travesaño delantero (tubo 20x20): **{travesano:.0f} mm**\n"
-           f"- Pletinas horquilla 30x5: **2 x {L:.0f} mm** — agujeros a {h1:.0f} / {h2:.0f} / {ax:.0f} mm "
-           f"(ver `plantilla_pletina_horquilla_1a1.svg`)\n"
+           f"- Pletinas horquilla 30x5: **2 x {Lf:.0f} mm** (ver `plantilla_pletina_horquilla_1a1.svg`)\n"
+           f"- Pletinas brazo trasero 30x5: **2 x {Lr:.0f} mm** (ver `plantilla_pletina_brazo_trasero_1a1.svg`)\n"
            f"- Brazos patineta (tubo Ø20): **2 x ~{brazo:.0f} mm** (cortar 20 mm más largo y ajustar)\n"
-           f"- Poste asiento (tubo Ø25): **1 x 300 mm**, perforar Ø6.5 cada 25 mm para regular altura\n")
+           f"- Poste asiento (tubo Ø25): **1 x 300 mm**, perforar Ø6,5 cada 25 mm para regular altura\n")
     open(os.path.join(ROOT, "docs", "cortes_metal.md"), "w").write("# Cortes de metal (generado por cad/build.py)\n\n" + txt)
     print(txt)
 

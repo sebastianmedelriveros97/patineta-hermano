@@ -1,0 +1,346 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0,2 L10,5 L0,8 z" fill="#333"/></marker><pattern id="mesh" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M0,0 L2,2 M2,0 L0,2" stroke="#b0bec5" stroke-width="0.12"/></pattern></defs>
+<rect width="420" height="297" fill="white"/>
+<rect x="5" y="5" width="410" height="287" fill="none" stroke="#222" stroke-width="0.5"/>
+<line x1="14.00" y1="138.00" x2="165.00" y2="138.00" stroke="#9e9e9e" stroke-width="0.4" stroke-linecap="round"/>
+<polygon points="72.00,116.20 113.00,116.20 115.50,101.20 71.00,101.20" stroke="#b0bec5" fill="url(#mesh)" stroke-width="0.25" stroke-linejoin="round"/>
+<circle cx="60.00" cy="124.20" r="9.00" stroke="#455a64" fill="none" stroke-width="0.25" stroke-dasharray="1,0.8"/>
+<circle cx="60.00" cy="124.20" r="7.02" stroke="#455a64" fill="none" stroke-width="0.25" stroke-dasharray="1,0.8"/>
+<circle cx="60.00" cy="124.20" r="1.08" stroke="#455a64" fill="none" stroke-width="0.2" stroke-dasharray="1,0.8"/>
+<circle cx="116.00" cy="122.70" r="10.50" stroke="#455a64" fill="none" stroke-width="0.25" stroke-dasharray="1,0.8"/>
+<circle cx="116.00" cy="122.70" r="8.19" stroke="#455a64" fill="none" stroke-width="0.25" stroke-dasharray="1,0.8"/>
+<circle cx="116.00" cy="122.70" r="1.26" stroke="#455a64" fill="none" stroke-width="0.2" stroke-dasharray="1,0.8"/>
+<polygon points="59.50,124.20 63.50,124.20 64.50,110.70 60.50,110.70" stroke="#455a64" fill="#78909c" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="113.00,123.70 118.50,123.70 119.00,117.70 113.00,117.70" stroke="#455a64" fill="#78909c" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="118.50,119.20 123.00,119.70 123.20,118.20 118.80,117.70" stroke="#455a64" fill="#90a4ae" stroke-width="0.15" stroke-linejoin="round"/>
+<line x1="62.00" y1="110.70" x2="91.59" y2="74.16" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="116.00" y1="118.20" x2="91.59" y2="74.16" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="91.59" y1="74.16" x2="135.00" y2="32.20" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="135.00" cy="32.20" r="1.60" stroke="#455a64" fill="#37474f" stroke-width="0.2"/>
+<line x1="91.59" y1="74.16" x2="72.59" y2="71.66" stroke="#455a64" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="72.09" cy="71.66" r="1.40" stroke="#455a64" fill="#37474f" stroke-width="0.2"/>
+<polygon points="71.00,86.20 98.50,89.20 99.50,86.20 73.00,83.20" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<polygon points="97.00,88.70 116.00,45.20 112.50,43.70 94.50,86.20" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<polygon points="64.00,100.70 74.00,98.70 74.00,96.70 64.00,98.40" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<line x1="71.00" y1="86.20" x2="66.00" y2="98.70" stroke="#cfd8dc" stroke-width="4.0" stroke-linecap="round"/>
+<path d="M 105.00,57.20 C 112.00,33.20 86.00,27.20 73.00,51.20 L 77.50,52.20 C 87.00,34.20 107.00,37.20 101.50,56.70 Z " stroke="#78909c" fill="#b0bec5" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="102.00" cy="57.20" r="6.20" stroke="#c8a58c" fill="#f3d9c4" stroke-width="0.2"/>
+<line x1="99.50" y1="64.20" x2="90.00" y2="81.20" stroke="#f3d9c4" stroke-width="9.5" stroke-linecap="round"/>
+<line x1="90.00" y1="81.70" x2="77.50" y2="82.70" stroke="#f3d9c4" stroke-width="7.0" stroke-linecap="round"/>
+<line x1="77.50" y1="83.20" x2="73.00" y2="95.20" stroke="#f3d9c4" stroke-width="5.5" stroke-linecap="round"/>
+<polygon points="114.08,119.27 108.74,109.65 112.59,107.51 115.02,111.89 117.64,111.46 121.13,114.56 120.38,115.89 117.92,117.13" stroke="#e65100" fill="#ffcc80" stroke-width="0.3" stroke-linejoin="round"/>
+<line x1="116.50" y1="112.09" x2="129.50" y2="122.75" stroke="#546e7a" stroke-width="3.0" stroke-linecap="round"/>
+<circle cx="116.50" cy="112.09" r="0.60" stroke="#222" fill="#9e9e9e" stroke-width="0.15"/>
+<circle cx="119.75" cy="114.75" r="0.60" stroke="#222" fill="#9e9e9e" stroke-width="0.15"/>
+<circle cx="129.50" cy="122.75" r="15.25" stroke="#e65100" fill="#263238" stroke-width="0.3"/>
+<circle cx="129.50" cy="122.75" r="9.75" stroke="#e65100" fill="#eceff1" stroke-width="0.25"/>
+<circle cx="129.50" cy="122.75" r="1.83" stroke="#e65100" fill="#e65100" stroke-width="0.2"/>
+<line x1="129.50" y1="122.75" x2="139.25" y2="122.75" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="137.39" y2="117.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="132.51" y2="113.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="126.49" y2="113.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="121.61" y2="117.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="119.75" y2="122.75" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="121.61" y2="128.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="126.49" y2="132.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="132.51" y2="132.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="122.75" x2="137.39" y2="128.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<polygon points="63.80,111.97 70.09,104.20 62.63,98.16 56.34,105.93" stroke="#e65100" fill="#ffcc80" stroke-width="0.3" stroke-linejoin="round"/>
+<line x1="62.52" y1="104.50" x2="39.52" y2="122.75" stroke="#546e7a" stroke-width="3.0" stroke-linecap="round"/>
+<polygon points="61.52,105.50 63.52,105.50 63.52,103.50 61.52,103.50" stroke="#222" fill="#bdbdbd" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="62.52,104.50 57.28,108.11 55.28,111.61" stroke="#e65100" fill="#ffcc80" stroke-width="0.25" stroke-linejoin="round"/>
+<circle cx="39.52" cy="122.75" r="15.25" stroke="#e65100" fill="#263238" stroke-width="0.3"/>
+<circle cx="39.52" cy="122.75" r="9.75" stroke="#e65100" fill="#eceff1" stroke-width="0.25"/>
+<circle cx="39.52" cy="122.75" r="1.83" stroke="#e65100" fill="#e65100" stroke-width="0.2"/>
+<line x1="39.52" y1="122.75" x2="49.27" y2="122.75" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="47.40" y2="117.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="42.53" y2="113.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="36.50" y2="113.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="31.63" y2="117.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="29.77" y2="122.75" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="31.63" y2="128.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="36.50" y2="132.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="42.53" y2="132.02" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="122.75" x2="47.40" y2="128.48" stroke="#90a4ae" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="135.00" y1="32.20" x2="147.00" y2="54.20" stroke="#fb8c00" stroke-width="0.35" stroke-linecap="round" stroke-dasharray="0.8,0.5"/>
+<text x="145.80" y="55.00" font-size="2.2" fill="#e65100" text-anchor="end" font-weight="normal">correa de</text>
+<text x="145.80" y="58.50" font-size="2.2" fill="#e65100" text-anchor="end" font-weight="normal">muñeca</text>
+<text x="16.00" y="15.00" font-size="4" fill="#111" text-anchor="start" font-weight="bold">1 · VISTA LATERAL — MODO TROTE (3 ruedas)</text>
+<text x="16.00" y="21.00" font-size="2.4" fill="#555" text-anchor="start" font-weight="normal">patineta, hamaca y bandeja desmontadas</text>
+<text x="16.00" y="26.00" font-size="2.4" fill="#555" text-anchor="start" font-weight="normal">ruedas originales quedan en el aire</text>
+<line x1="113.33" y1="113.39" x2="150.00" y2="74.00" stroke="#e65100" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="113.33" cy="113.39" r="0.60" stroke="#e65100" fill="#e65100" stroke-width="0.1"/>
+<text x="150.80" y="74.80" font-size="2.3" fill="#e65100" text-anchor="start" font-weight="normal">soporte brazo</text>
+<text x="150.80" y="78.00" font-size="2.3" fill="#e65100" text-anchor="start" font-weight="normal">trasero (impreso)</text>
+<line x1="123.00" y1="117.42" x2="150.00" y2="88.00" stroke="#546e7a" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="123.00" cy="117.42" r="0.60" stroke="#546e7a" fill="#546e7a" stroke-width="0.1"/>
+<text x="150.80" y="88.80" font-size="2.3" fill="#546e7a" text-anchor="start" font-weight="normal">brazo pletina</text>
+<text x="150.80" y="92.00" font-size="2.3" fill="#546e7a" text-anchor="start" font-weight="normal">acero 30x5</text>
+<line x1="129.50" y1="122.75" x2="150.00" y2="102.00" stroke="#546e7a" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="129.50" cy="122.75" r="0.60" stroke="#546e7a" fill="#546e7a" stroke-width="0.1"/>
+<text x="150.80" y="102.80" font-size="2.3" fill="#546e7a" text-anchor="start" font-weight="normal">eje Ø16 pasante</text>
+<line x1="139.00" y1="113.25" x2="150.00" y2="113.00" stroke="#e65100" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="139.00" cy="113.25" r="0.60" stroke="#e65100" fill="#e65100" stroke-width="0.1"/>
+<text x="150.80" y="113.80" font-size="2.3" fill="#e65100" text-anchor="start" font-weight="normal">rueda 12" Ø305</text>
+<line x1="116.00" y1="122.70" x2="150.00" y2="126.00" stroke="#78909c" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="116.00" cy="122.70" r="0.60" stroke="#78909c" fill="#78909c" stroke-width="0.1"/>
+<text x="150.80" y="126.80" font-size="2.3" fill="#78909c" text-anchor="start" font-weight="normal">rueda original</text>
+<text x="150.80" y="130.00" font-size="2.3" fill="#78909c" text-anchor="start" font-weight="normal">(en el aire)</text>
+<line x1="65.24" y1="106.70" x2="32.00" y2="60.00" stroke="#e65100" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="65.24" cy="106.70" r="0.60" stroke="#e65100" fill="#e65100" stroke-width="0.1"/>
+<text x="31.20" y="60.80" font-size="2.3" fill="#e65100" text-anchor="end" font-weight="normal">soporte travesaño</text>
+<text x="31.20" y="64.00" font-size="2.3" fill="#e65100" text-anchor="end" font-weight="normal">(impreso)</text>
+<line x1="62.52" y1="104.50" x2="32.00" y2="71.00" stroke="#546e7a" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="62.52" cy="104.50" r="0.60" stroke="#546e7a" fill="#546e7a" stroke-width="0.1"/>
+<text x="31.20" y="71.80" font-size="2.3" fill="#546e7a" text-anchor="end" font-weight="normal">travesaño 20x20</text>
+<line x1="51.02" y1="113.62" x2="32.00" y2="81.00" stroke="#546e7a" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="51.02" cy="113.62" r="0.60" stroke="#546e7a" fill="#546e7a" stroke-width="0.1"/>
+<text x="31.20" y="81.80" font-size="2.3" fill="#546e7a" text-anchor="end" font-weight="normal">horquilla 2</text>
+<text x="31.20" y="85.00" font-size="2.3" fill="#546e7a" text-anchor="end" font-weight="normal">pletinas 30x5</text>
+<line x1="39.52" y1="122.75" x2="32.00" y2="94.00" stroke="#e65100" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="39.52" cy="122.75" r="0.60" stroke="#e65100" fill="#e65100" stroke-width="0.1"/>
+<text x="31.20" y="94.80" font-size="2.3" fill="#e65100" text-anchor="end" font-weight="normal">rueda fija 12"</text>
+<line x1="39.52" y1="138.00" x2="39.52" y2="150.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="129.50" y1="138.00" x2="129.50" y2="150.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="39.52" y1="150.00" x2="129.50" y2="150.00" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="84.51" y="149.20" font-size="2.3" fill="#333" text-anchor="middle">entre ejes 900  ·  largo total 1123</text>
+<line x1="147.00" y1="138.00" x2="146.20" y2="138.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="147.00" y1="30.60" x2="146.20" y2="30.60" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="147.00" y1="138.00" x2="147.00" y2="30.60" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="146.20" y="84.30" font-size="2.3" fill="#333" text-anchor="middle" transform="rotate(-90 146.20 84.30)">altura manillar 1074</text>
+<line x1="101.00" y1="138.00" x2="100.20" y2="138.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="101.00" y1="133.20" x2="100.20" y2="133.20" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="101.00" y1="138.00" x2="101.00" y2="133.20" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="100.20" y="135.60" font-size="2.3" fill="#333" text-anchor="middle" transform="rotate(-90 100.20 135.60)">48</text>
+<line x1="217.00" y1="138.00" x2="357.00" y2="138.00" stroke="#9e9e9e" stroke-width="0.4" stroke-linecap="round"/>
+<polygon points="244.00,121.00 285.00,121.00 287.50,106.00 243.00,106.00" stroke="#b0bec5" fill="url(#mesh)" stroke-width="0.25" stroke-linejoin="round"/>
+<circle cx="232.00" cy="129.00" r="9.00" stroke="#455a64" fill="#263238" stroke-width="0.3"/>
+<circle cx="232.00" cy="129.00" r="7.02" stroke="#455a64" fill="#eceff1" stroke-width="0.25"/>
+<circle cx="232.00" cy="129.00" r="1.08" stroke="#455a64" fill="#455a64" stroke-width="0.2"/>
+<circle cx="288.00" cy="127.50" r="10.50" stroke="#455a64" fill="#263238" stroke-width="0.3"/>
+<circle cx="288.00" cy="127.50" r="8.19" stroke="#455a64" fill="#eceff1" stroke-width="0.25"/>
+<circle cx="288.00" cy="127.50" r="1.26" stroke="#455a64" fill="#455a64" stroke-width="0.2"/>
+<polygon points="231.50,129.00 235.50,129.00 236.50,115.50 232.50,115.50" stroke="#455a64" fill="#78909c" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="285.00,128.50 290.50,128.50 291.00,122.50 285.00,122.50" stroke="#455a64" fill="#78909c" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="290.50,124.00 295.00,124.50 295.20,123.00 290.80,122.50" stroke="#455a64" fill="#90a4ae" stroke-width="0.15" stroke-linejoin="round"/>
+<line x1="234.00" y1="115.50" x2="263.59" y2="78.96" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="288.00" y1="123.00" x2="263.59" y2="78.96" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="263.59" y1="78.96" x2="307.00" y2="37.00" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="307.00" cy="37.00" r="1.60" stroke="#455a64" fill="#37474f" stroke-width="0.2"/>
+<line x1="263.59" y1="78.96" x2="244.59" y2="76.46" stroke="#455a64" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="244.09" cy="76.46" r="1.40" stroke="#455a64" fill="#37474f" stroke-width="0.2"/>
+<polygon points="243.00,91.00 270.50,94.00 271.50,91.00 245.00,88.00" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<polygon points="269.00,93.50 288.00,50.00 284.50,48.50 266.50,91.00" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<polygon points="236.00,105.50 246.00,103.50 246.00,101.50 236.00,103.20" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<line x1="243.00" y1="91.00" x2="238.00" y2="103.50" stroke="#cfd8dc" stroke-width="4.0" stroke-linecap="round"/>
+<path d="M 277.00,62.00 C 284.00,38.00 258.00,32.00 245.00,56.00 L 249.50,57.00 C 259.00,39.00 279.00,42.00 273.50,61.50 Z " stroke="#78909c" fill="#b0bec5" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="274.00" cy="62.00" r="6.20" stroke="#c8a58c" fill="#f3d9c4" stroke-width="0.2"/>
+<line x1="271.50" y1="69.00" x2="262.00" y2="86.00" stroke="#f3d9c4" stroke-width="9.5" stroke-linecap="round"/>
+<line x1="262.00" y1="86.50" x2="249.50" y2="87.50" stroke="#f3d9c4" stroke-width="7.0" stroke-linecap="round"/>
+<line x1="249.50" y1="88.00" x2="245.00" y2="100.00" stroke="#f3d9c4" stroke-width="5.5" stroke-linecap="round"/>
+<polygon points="280.50,114.01 276.62,107.01 280.47,104.88 284.13,105.71 285.59,108.33 284.35,111.88" stroke="#1565c0" fill="#bbdefb" stroke-width="0.3" stroke-linejoin="round"/>
+<polygon points="325.63,128.60 331.63,128.60 329.93,134.00 327.33,134.00" stroke="#1565c0" fill="#bbdefb" stroke-width="0.25" stroke-linejoin="round"/>
+<circle cx="328.63" cy="134.00" r="4.00" stroke="#1565c0" fill="#263238" stroke-width="0.3"/>
+<circle cx="328.63" cy="134.00" r="3.00" stroke="#1565c0" fill="#eceff1" stroke-width="0.25"/>
+<circle cx="328.63" cy="134.00" r="0.48" stroke="#1565c0" fill="#1565c0" stroke-width="0.2"/>
+<polygon points="305.63,128.60 331.63,128.60 333.63,127.80 333.63,126.40 303.63,126.40 303.63,127.80" stroke="#1565c0" fill="#90caf9" stroke-width="0.3" stroke-linejoin="round"/>
+<line x1="304.63" y1="126.20" x2="332.63" y2="126.20" stroke="#212121" stroke-width="0.35" stroke-linecap="round"/>
+<polygon points="304.13,126.40 311.13,126.40 311.13,125.40 304.13,125.40" stroke="#1565c0" fill="#bbdefb" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="305.03,125.40 310.23,125.40 308.93,120.30 306.33,120.30" stroke="#1565c0" fill="#bbdefb" stroke-width="0.2" stroke-linejoin="round"/>
+<line x1="283.63" y1="107.70" x2="306.63" y2="121.60" stroke="#90a4ae" stroke-width="2.0" stroke-linecap="round"/>
+<circle cx="283.63" cy="107.70" r="0.80" stroke="#222" fill="#9e9e9e" stroke-width="0.15"/>
+<circle cx="307.63" cy="121.60" r="0.60" stroke="#222" fill="#9e9e9e" stroke-width="0.15"/>
+<polygon points="317.43,126.40 319.83,126.40 319.83,118.60 317.43,118.60" stroke="#1565c0" fill="#bbdefb" stroke-width="0.2" stroke-linejoin="round"/>
+<line x1="318.63" y1="124.40" x2="318.63" y2="103.60" stroke="#90a4ae" stroke-width="2.5" stroke-linecap="round"/>
+<polygon points="308.13,102.00 329.13,102.00 328.13,103.60 309.13,103.60" stroke="#1565c0" fill="#64b5f6" stroke-width="0.3" stroke-linejoin="round"/>
+<circle cx="293.11" cy="50.43" r="2.20" stroke="#2e7d32" fill="#a5d6a7" stroke-width="0.3"/>
+<line x1="316.13" y1="99.00" x2="302.13" y2="69.00" stroke="#f3d9c4" stroke-width="12.0" stroke-linecap="round"/>
+<circle cx="297.13" cy="58.50" r="7.50" stroke="#c8a58c" fill="#f3d9c4" stroke-width="0.2"/>
+<circle cx="303.63" cy="56.00" r="0.70" stroke="#5d4037" fill="#5d4037" stroke-width="0.1"/>
+<line x1="318.63" y1="99.00" x2="332.13" y2="96.50" stroke="#f3d9c4" stroke-width="8.5" stroke-linecap="round"/>
+<line x1="332.63" y1="97.00" x2="333.63" y2="123.90" stroke="#f3d9c4" stroke-width="6.5" stroke-linecap="round"/>
+<line x1="304.63" y1="73.00" x2="320.63" y2="83.00" stroke="#f3d9c4" stroke-width="4.5" stroke-linecap="round"/>
+<path d="M 293.11,50.43 C 294.11,53.43 286.63,48.00 289.13,59.00 C 291.63,72.00 305.63,96.00 309.63,101.50 L 328.63,101.70 " stroke="#2e7d32" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="309.13" y1="102.50" x2="283.63" y2="107.70" stroke="#2e7d32" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="1.2,0.6"/>
+<line x1="309.13" y1="88.00" x2="319.63" y2="90.00" stroke="#2e7d32" stroke-width="0.6" stroke-linecap="round"/>
+<polygon points="283.50,34.40 305.00,34.40 305.00,33.00 283.50,33.00" stroke="#6a1b9a" fill="#e1bee7" stroke-width="0.3" stroke-linejoin="round"/>
+<polygon points="304.80,39.00 309.20,39.00 309.20,34.40 300.00,34.40 300.00,35.20 304.80,36.50" stroke="#6a1b9a" fill="#ce93d8" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="289.85,40.50 298.65,40.50 298.65,33.00 289.85,33.00" stroke="#6a1b9a" fill="none" stroke-width="0.25" stroke-linejoin="round" stroke-dasharray="1,0.6"/>
+<polygon points="285.10,33.00 286.10,33.00 294.50,16.90 293.50,16.40" stroke="#212121" fill="#424242" stroke-width="0.2" stroke-linejoin="round"/>
+<text x="296.00" y="13.00" font-size="4" fill="#111" text-anchor="start" font-weight="bold">2 · VISTA LATERAL — MODO PASEO</text>
+<text x="296.00" y="19.00" font-size="2.4" fill="#555" text-anchor="start" font-weight="normal">patineta + sillín + hamaca (siesta) + bandeja</text>
+<line x1="289.50" y1="33.00" x2="350.00" y2="28.00" stroke="#6a1b9a" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="289.50" cy="33.00" r="0.60" stroke="#6a1b9a" fill="#6a1b9a" stroke-width="0.1"/>
+<text x="350.80" y="28.80" font-size="2.3" fill="#6a1b9a" text-anchor="start" font-weight="normal">bandeja tablet + 2 portavasos</text>
+<line x1="290.50" y1="23.40" x2="350.00" y2="36.00" stroke="#424242" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="290.50" cy="23.40" r="0.60" stroke="#424242" fill="#424242" stroke-width="0.1"/>
+<text x="350.80" y="36.80" font-size="2.3" fill="#424242" text-anchor="start" font-weight="normal">tablet en el riel</text>
+<line x1="293.11" y1="50.43" x2="350.00" y2="44.00" stroke="#2e7d32" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="293.11" cy="50.43" r="0.60" stroke="#2e7d32" fill="#2e7d32" stroke-width="0.1"/>
+<text x="350.80" y="44.80" font-size="2.3" fill="#2e7d32" text-anchor="start" font-weight="normal">anclaje superior hamaca</text>
+<line x1="291.13" y1="69.00" x2="350.00" y2="52.00" stroke="#2e7d32" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="291.13" cy="69.00" r="0.60" stroke="#2e7d32" fill="#2e7d32" stroke-width="0.1"/>
+<text x="350.80" y="52.80" font-size="2.3" fill="#2e7d32" text-anchor="start" font-weight="normal">lona hamaca (respaldo)</text>
+<line x1="314.63" y1="88.50" x2="350.00" y2="60.00" stroke="#2e7d32" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="314.63" cy="88.50" r="0.60" stroke="#2e7d32" fill="#2e7d32" stroke-width="0.1"/>
+<text x="350.80" y="60.80" font-size="2.3" fill="#2e7d32" text-anchor="start" font-weight="normal">cinturón</text>
+<line x1="324.63" y1="102.80" x2="350.00" y2="69.00" stroke="#1565c0" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="324.63" cy="102.80" r="0.60" stroke="#1565c0" fill="#1565c0" stroke-width="0.1"/>
+<text x="350.80" y="69.80" font-size="2.3" fill="#1565c0" text-anchor="start" font-weight="normal">sillín regulable</text>
+<line x1="283.63" y1="107.70" x2="350.00" y2="78.00" stroke="#1565c0" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="283.63" cy="107.70" r="0.60" stroke="#1565c0" fill="#1565c0" stroke-width="0.1"/>
+<text x="350.80" y="78.80" font-size="2.3" fill="#1565c0" text-anchor="start" font-weight="normal">abrazadera pivote + anclaje inf.</text>
+<line x1="295.63" y1="114.65" x2="350.00" y2="87.00" stroke="#78909c" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="295.63" cy="114.65" r="0.60" stroke="#78909c" fill="#78909c" stroke-width="0.1"/>
+<text x="350.80" y="87.80" font-size="2.3" fill="#78909c" text-anchor="start" font-weight="normal">brazos alu Ø20</text>
+<line x1="307.63" y1="121.60" x2="350.00" y2="96.00" stroke="#1565c0" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="307.63" cy="121.60" r="0.60" stroke="#1565c0" fill="#1565c0" stroke-width="0.1"/>
+<text x="350.80" y="96.80" font-size="2.3" fill="#1565c0" text-anchor="start" font-weight="normal">pivote giratorio M10 + bisagra M8</text>
+<line x1="329.63" y1="126.40" x2="350.00" y2="105.00" stroke="#1565c0" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="329.63" cy="126.40" r="0.60" stroke="#1565c0" fill="#1565c0" stroke-width="0.1"/>
+<text x="350.80" y="105.80" font-size="2.3" fill="#1565c0" text-anchor="start" font-weight="normal">tabla 400x300 (4 baldosas)</text>
+<line x1="328.63" y1="134.00" x2="350.00" y2="114.00" stroke="#1565c0" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="328.63" cy="134.00" r="0.60" stroke="#1565c0" fill="#1565c0" stroke-width="0.1"/>
+<text x="350.80" y="114.80" font-size="2.3" fill="#1565c0" text-anchor="start" font-weight="normal">ruedas patín 80 mm</text>
+<line x1="223.00" y1="138.00" x2="223.00" y2="150.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="333.63" y1="138.00" x2="333.63" y2="150.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="223.00" y1="150.00" x2="333.63" y2="150.00" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="278.32" y="149.20" font-size="2.3" fill="#333" text-anchor="middle">largo total 1106</text>
+<line x1="303.63" y1="138.00" x2="303.63" y2="143.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="333.63" y1="138.00" x2="333.63" y2="143.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="303.63" y1="143.00" x2="333.63" y2="143.00" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="318.63" y="142.20" font-size="2.3" fill="#333" text-anchor="middle">300</text>
+<line x1="336.13" y1="138.00" x2="335.33" y2="138.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="336.13" y1="126.40" x2="335.33" y2="126.40" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="336.13" y1="138.00" x2="336.13" y2="126.40" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="335.33" y="132.20" font-size="2.3" fill="#333" text-anchor="middle" transform="rotate(-90 335.33 132.20)">116</text>
+<line x1="342.13" y1="138.00" x2="341.33" y2="138.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="342.13" y1="102.00" x2="341.33" y2="102.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="342.13" y1="138.00" x2="342.13" y2="102.00" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="341.33" y="120.00" font-size="2.3" fill="#333" text-anchor="middle" transform="rotate(-90 341.33 120.00)">sillín 360</text>
+<line x1="214.00" y1="138.00" x2="213.20" y2="138.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="214.00" y1="35.40" x2="213.20" y2="35.40" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="214.00" y1="138.00" x2="214.00" y2="35.40" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="213.20" y="86.70" font-size="2.3" fill="#333" text-anchor="middle" transform="rotate(-90 213.20 86.70)">manillar 1026</text>
+<text x="223.00" y="184.00" font-size="3.4" fill="#111" text-anchor="start" font-weight="bold">3 · PLANTA — MODO PASEO</text>
+<line x1="240.00" y1="191.60" x2="269.59" y2="191.60" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="294.00" y1="191.60" x2="269.59" y2="191.60" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="269.59" y1="191.60" x2="313.00" y2="191.60" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="229.00,193.10 247.00,193.10 247.00,189.10 229.00,189.10" stroke="#455a64" fill="#263238" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="283.50,190.80 304.50,190.80 304.50,186.80 283.50,186.80" stroke="#455a64" fill="#263238" stroke-width="0.2" stroke-linejoin="round"/>
+<line x1="240.00" y1="236.40" x2="269.59" y2="236.40" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="294.00" y1="236.40" x2="269.59" y2="236.40" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="269.59" y1="236.40" x2="313.00" y2="236.40" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="229.00,234.90 247.00,234.90 247.00,238.90 229.00,238.90" stroke="#455a64" fill="#263238" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="283.50,237.20 304.50,237.20 304.50,241.20 283.50,241.20" stroke="#455a64" fill="#263238" stroke-width="0.2" stroke-linejoin="round"/>
+<line x1="313.00" y1="237.50" x2="313.00" y2="190.50" stroke="#37474f" stroke-width="3.0" stroke-linecap="round"/>
+<polygon points="251.00,230.50 294.00,230.50 294.00,197.50 251.00,197.50" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<path d="M 253.00,234.50 C 268.00,238.00 281.00,238.00 285.00,234.50 L 285.00,193.50 C 281.00,190.00 268.00,190.00 253.00,193.50 Z " stroke="#78909c" fill="#b0bec5" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="250.09" y1="236.50" x2="250.09" y2="191.50" stroke="#37474f" stroke-width="2.5" stroke-linecap="round"/>
+<polygon points="289.50,227.50 311.00,227.50 311.00,200.50 289.50,200.50" stroke="#6a1b9a" fill="#e1bee7" stroke-width="0.3" stroke-linejoin="round"/>
+<polygon points="290.30,226.50 307.88,226.50 307.88,201.50 290.30,201.50" stroke="#9e9e9e" fill="none" stroke-width="0.15" stroke-linejoin="round" stroke-dasharray="0.8,0.5"/>
+<circle cx="300.25" cy="196.00" r="4.40" stroke="#6a1b9a" fill="#ce93d8" stroke-width="0.3"/>
+<circle cx="300.25" cy="196.00" r="3.70" stroke="#6a1b9a" fill="white" stroke-width="0.2"/>
+<circle cx="300.25" cy="232.00" r="4.40" stroke="#6a1b9a" fill="#ce93d8" stroke-width="0.3"/>
+<circle cx="300.25" cy="232.00" r="3.70" stroke="#6a1b9a" fill="white" stroke-width="0.2"/>
+<polygon points="299.11,236.00 299.11,192.00 318.63,195.00 318.63,233.00" stroke="#2e7d32" fill="#c8e6c9" stroke-width="0.3" stroke-linejoin="round" stroke-dasharray="1,0.5"/>
+<line x1="289.63" y1="193.20" x2="311.13" y2="212.20" stroke="#90a4ae" stroke-width="2.0" stroke-linecap="round"/>
+<polygon points="286.13,194.10 293.13,194.10 293.13,189.10 286.13,189.10" stroke="#1565c0" fill="#bbdefb" stroke-width="0.25" stroke-linejoin="round"/>
+<line x1="289.63" y1="234.80" x2="311.13" y2="215.80" stroke="#90a4ae" stroke-width="2.0" stroke-linecap="round"/>
+<polygon points="286.13,233.90 293.13,233.90 293.13,238.90 286.13,238.90" stroke="#1565c0" fill="#bbdefb" stroke-width="0.25" stroke-linejoin="round"/>
+<path d="M 313.63,234.00 L 335.63,234.00 Q 339.63,234.00 339.63,230.00 L 339.63,198.00 Q 339.63,194.00 335.63,194.00 L 313.63,194.00 Q 309.63,194.00 309.63,198.00 L 309.63,230.00 Q 309.63,234.00 313.63,234.00 Z " stroke="#1565c0" fill="#90caf9" stroke-width="0.3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="324.63" y1="234.00" x2="324.63" y2="194.00" stroke="#64b5f6" stroke-width="0.15" stroke-linecap="round" stroke-dasharray="1,0.6"/>
+<line x1="309.63" y1="214.00" x2="339.63" y2="214.00" stroke="#64b5f6" stroke-width="0.15" stroke-linecap="round" stroke-dasharray="1,0.6"/>
+<polygon points="330.63,199.70 338.63,199.70 338.63,197.30 330.63,197.30" stroke="#1565c0" fill="#263238" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="330.63,230.70 338.63,230.70 338.63,228.30 330.63,228.30" stroke="#1565c0" fill="#263238" stroke-width="0.2" stroke-linejoin="round"/>
+<circle cx="313.63" cy="197.60" r="2.60" stroke="#1565c0" fill="#bbdefb" stroke-width="0.3"/>
+<ellipse cx="324.63" cy="214.00" rx="8.5" ry="10.5" stroke="#1565c0" fill="#64b5f6" stroke-width="0.3"/>
+<line x1="339.63" y1="234.00" x2="346.43" y2="234.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="339.63" y1="194.00" x2="346.43" y2="194.00" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="345.63" y1="234.00" x2="345.63" y2="194.00" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="344.83" y="214.00" font-size="2.3" fill="#333" text-anchor="middle" transform="rotate(-90 344.83 214.00)">400</text>
+<line x1="229.00" y1="237.50" x2="222.20" y2="237.50" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="229.00" y1="190.50" x2="222.20" y2="190.50" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="223.00" y1="237.50" x2="223.00" y2="190.50" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="222.20" y="214.00" font-size="2.3" fill="#333" text-anchor="middle" transform="rotate(-90 222.20 214.00)">ancho coche 470</text>
+<text x="12.00" y="176.00" font-size="3.4" fill="#111" text-anchor="start" font-weight="bold">4 · VISTA TRASERA</text>
+<text x="12.00" y="181.00" font-size="3.4" fill="#111" text-anchor="start" font-weight="bold">MODO TROTE</text>
+<line x1="68.00" y1="278.00" x2="156.00" y2="278.00" stroke="#9e9e9e" stroke-width="0.4" stroke-linecap="round"/>
+<line x1="134.40" y1="258.20" x2="134.40" y2="214.16" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="134.40" y1="214.16" x2="135.00" y2="172.20" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="135.20,273.20 139.20,273.20 139.20,252.20 135.20,252.20" stroke="#455a64" fill="none" stroke-width="0.25" stroke-linejoin="round" stroke-dasharray="1,0.8"/>
+<polygon points="131.91,258.20 136.90,258.20 136.90,248.58 131.91,248.58" stroke="#e65100" fill="#ffcc80" stroke-width="0.3" stroke-linejoin="round"/>
+<polygon points="131.41,262.75 131.91,262.75 131.91,254.20 131.41,254.20" stroke="#263238" fill="#546e7a" stroke-width="0.15" stroke-linejoin="round"/>
+<polygon points="131.91,264.15 141.16,264.15 141.16,261.35 131.91,261.35" stroke="#e65100" fill="#ffcc80" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="140.86,278.00 146.46,278.00 146.46,247.50 140.86,247.50" stroke="#e65100" fill="#263238" stroke-width="0.3" stroke-linejoin="round"/>
+<polygon points="142.16,264.95 145.16,264.95 145.16,260.55 142.16,260.55" stroke="#9e9e9e" fill="#cfd8dc" stroke-width="0.15" stroke-linejoin="round"/>
+<polygon points="130.00,264.55 131.41,264.55 131.41,260.95 130.00,260.95" stroke="#e65100" fill="#ffab40" stroke-width="0.15" stroke-linejoin="round"/>
+<line x1="89.60" y1="258.20" x2="89.60" y2="214.16" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="89.60" y1="214.16" x2="89.00" y2="172.20" stroke="#455a64" stroke-width="2.2" stroke-linecap="round"/>
+<polygon points="88.80,273.20 84.80,273.20 84.80,252.20 88.80,252.20" stroke="#455a64" fill="none" stroke-width="0.25" stroke-linejoin="round" stroke-dasharray="1,0.8"/>
+<polygon points="87.11,258.20 92.09,258.20 92.09,248.58 87.11,248.58" stroke="#e65100" fill="#ffcc80" stroke-width="0.3" stroke-linejoin="round"/>
+<polygon points="92.09,262.75 92.59,262.75 92.59,254.20 92.09,254.20" stroke="#263238" fill="#546e7a" stroke-width="0.15" stroke-linejoin="round"/>
+<polygon points="92.09,264.15 82.84,264.15 82.84,261.35 92.09,261.35" stroke="#e65100" fill="#ffcc80" stroke-width="0.2" stroke-linejoin="round"/>
+<polygon points="77.54,278.00 83.14,278.00 83.14,247.50 77.54,247.50" stroke="#e65100" fill="#263238" stroke-width="0.3" stroke-linejoin="round"/>
+<polygon points="78.84,264.95 81.84,264.95 81.84,260.55 78.84,260.55" stroke="#9e9e9e" fill="#cfd8dc" stroke-width="0.15" stroke-linejoin="round"/>
+<polygon points="94.00,264.55 92.59,264.55 92.59,260.95 94.00,260.95" stroke="#e65100" fill="#ffab40" stroke-width="0.15" stroke-linejoin="round"/>
+<line x1="75.84" y1="262.75" x2="148.16" y2="262.75" stroke="#37474f" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="89.00" y1="172.20" x2="135.00" y2="172.20" stroke="#37474f" stroke-width="3.0" stroke-linecap="round"/>
+<polygon points="95.50,226.20 128.50,226.20 128.50,185.20 95.50,185.20" stroke="#b0bec5" fill="#cfd8dc" stroke-width="0.25" stroke-linejoin="round"/>
+<path d="M 90.50,191.20 C 90.50,167.20 133.50,167.20 133.50,191.20 Z " stroke="#78909c" fill="#b0bec5" stroke-width="0.25" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="91.00,256.20 133.00,256.20 133.00,241.20 91.00,241.20" stroke="#b0bec5" fill="url(#mesh)" stroke-width="0.25" stroke-linejoin="round"/>
+<line x1="80.34" y1="278.00" x2="80.34" y2="285.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="143.66" y1="278.00" x2="143.66" y2="285.80" stroke="#777" stroke-width="0.12" stroke-linecap="round"/>
+<line x1="80.34" y1="285.00" x2="143.66" y2="285.00" stroke="#333" stroke-width="0.15" marker-start="url(#ar)" marker-end="url(#ar)"/>
+<text x="112.00" y="284.20" font-size="2.3" fill="#333" text-anchor="middle">trocha 633  ·  ancho total 689</text>
+<line x1="92.39" y1="256.75" x2="56.00" y2="208.00" stroke="#546e7a" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="92.39" cy="256.75" r="0.60" stroke="#546e7a" fill="#546e7a" stroke-width="0.1"/>
+<text x="55.20" y="208.80" font-size="2.3" fill="#546e7a" text-anchor="end" font-weight="normal">pletina por DENTRO</text>
+<text x="55.20" y="212.50" font-size="2.3" fill="#546e7a" text-anchor="end" font-weight="normal">de la pata</text>
+<line x1="86.34" y1="262.75" x2="56.00" y2="222.00" stroke="#e65100" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="86.34" cy="262.75" r="0.60" stroke="#e65100" fill="#e65100" stroke-width="0.1"/>
+<text x="55.20" y="222.80" font-size="2.3" fill="#e65100" text-anchor="end" font-weight="normal">separador + collarín</text>
+<line x1="76.34" y1="262.75" x2="56.00" y2="234.00" stroke="#37474f" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="76.34" cy="262.75" r="0.60" stroke="#37474f" fill="#37474f" stroke-width="0.1"/>
+<text x="55.20" y="234.80" font-size="2.3" fill="#37474f" text-anchor="end" font-weight="normal">golilla + pasador R</text>
+<line x1="86.80" y1="258.20" x2="56.00" y2="245.00" stroke="#78909c" stroke-width="0.18" stroke-linecap="round"/>
+<circle cx="86.80" cy="258.20" r="0.60" stroke="#78909c" fill="#78909c" stroke-width="0.1"/>
+<text x="55.20" y="245.80" font-size="2.3" fill="#78909c" text-anchor="end" font-weight="normal">rueda original (aire)</text>
+<text x="158" y="178.0" font-size="3" font-weight="bold" fill="#333">NOTAS</text>
+<text x="158" y="181.4" font-size="2.15" font-weight="normal" fill="#333">• Escala 1:10 en hoja A3. Medidas en mm.</text>
+<text x="158" y="184.8" font-size="2.15" font-weight="normal" fill="#333">• Geometría del Leona 2 ESTIMADA de la ficha técnica</text>
+<text x="158" y="188.2" font-size="2.15" font-weight="normal" fill="#333">  (85,5 x 47 x 103,5 cm; ruedas 18 / 21 cm). Medir el</text>
+<text x="158" y="191.6" font-size="2.15" font-weight="normal" fill="#333">  coche real y corregir cad/params.py antes de imprimir.</text>
+<text x="158" y="195.0" font-size="2.15" font-weight="normal" fill="#333">• Naranjo = impreso (kit running) · gris azulado = acero/alu</text>
+<text x="158" y="198.4" font-size="2.15" font-weight="normal" fill="#333">• Azul = patineta · verde = hamaca · morado = bandeja</text>
+<text x="158" y="201.8" font-size="2.15" font-weight="normal" fill="#333">• Trote: patineta y hamaca SIEMPRE desmontadas.</text>
+<text x="158" y="205.2" font-size="2.15" font-weight="normal" fill="#333">• Paseo: la patineta funciona con ruedas originales o</text>
+<text x="158" y="208.6" font-size="2.15" font-weight="normal" fill="#333">  con el kit running puesto (no se tocan).</text>
+<text x="158" y="212.0" font-size="2.15" font-weight="normal" fill="#333">• Hamaca: la niña va sentada en el sillín mirando hacia</text>
+<text x="158" y="215.4" font-size="2.15" font-weight="normal" fill="#333">  el adulto; la lona sólo sostiene espalda y cabeza.</text>
+<rect x="158" y="220.8" width="4" height="3" fill="#e65100"/><text x="163.5" y="223.4" font-size="2.3" fill="#333">kit running (impreso)</text>
+<rect x="158" y="225.0" width="4" height="3" fill="#546e7a"/><text x="163.5" y="227.6" font-size="2.3" fill="#333">acero / aluminio</text>
+<rect x="158" y="229.20000000000002" width="4" height="3" fill="#1565c0"/><text x="163.5" y="231.8" font-size="2.3" fill="#333">patineta + sillín</text>
+<rect x="158" y="233.4" width="4" height="3" fill="#2e7d32"/><text x="163.5" y="236.0" font-size="2.3" fill="#333">hamaca</text>
+<rect x="158" y="237.60000000000002" width="4" height="3" fill="#6a1b9a"/><text x="163.5" y="240.20000000000002" font-size="2.3" fill="#333">bandeja</text>
+<rect x="300" y="256" width="115" height="36" fill="white" stroke="#222" stroke-width="0.4"/>
+<text x="303" y="263" font-size="4.2" font-weight="bold">PLANO GENERAL</text>
+<text x="303" y="269" font-size="2.8">Patineta hermano + kit running + hamaca + bandeja</text>
+<text x="303" y="274" font-size="2.8">Coche: Maxi-Cosi Leona 2</text>
+<line x1="300" y1="277" x2="415" y2="277" stroke="#222" stroke-width="0.3"/>
+<text x="303" y="282" font-size="2.6">Escala 1:10 · A3 · mm · generado por cad/plano.py</text>
+<text x="303" y="286.5" font-size="2.6">Rueda 12" Ø305 · elevación 48 · eje Ø16</text>
+<rect x="236" y="286" width="10" height="1.5" fill="#222" stroke="#222" stroke-width="0.15"/>
+<text x="236" y="285" font-size="2" text-anchor="middle">0</text>
+<rect x="246" y="286" width="10" height="1.5" fill="white" stroke="#222" stroke-width="0.15"/>
+<text x="246" y="285" font-size="2" text-anchor="middle">10</text>
+<rect x="256" y="286" width="10" height="1.5" fill="#222" stroke="#222" stroke-width="0.15"/>
+<text x="256" y="285" font-size="2" text-anchor="middle">20</text>
+<rect x="266" y="286" width="10" height="1.5" fill="white" stroke="#222" stroke-width="0.15"/>
+<text x="266" y="285" font-size="2" text-anchor="middle">30</text>
+<rect x="276" y="286" width="10" height="1.5" fill="#222" stroke="#222" stroke-width="0.15"/>
+<text x="276" y="285" font-size="2" text-anchor="middle">40</text>
+<rect x="286" y="286" width="10" height="1.5" fill="white" stroke="#222" stroke-width="0.15"/>
+<text x="286" y="285" font-size="2" text-anchor="middle">50</text>
+<text x="296" y="285" font-size="2" text-anchor="middle">60 cm</text>
+</svg>

@@ -11,17 +11,20 @@ En todas las abrazaderas de tubo:
 
 ## A. Kit running (3 ruedas)
 
-### A1. Eje trasero
-1. Corta la **barra roscada M12** al largo de `docs/cortes_metal.md` y lima las puntas.
-2. Instala en cada pata trasera un **soporte_eje_trasero** (A + B_tapa):
-   - la parte A, con el buje del eje, va **hacia atrás**;
+### A1. Brazos y eje trasero
+1. Imprime la plantilla `plantilla_pletina_brazo_trasero_1a1.svg` al 100 %. Corta y perfora 2 pletinas 30x5 (2 x Ø8,5 y 1 x Ø16,5).
+2. Instala en cada pata trasera un **soporte_brazo_trasero** (A + B_tapa):
+   - la parte A, con la oreja, va **hacia atrás**;
    - bájalo hasta que su cara inferior **descanse sobre la carcasa de la rueda original** (ese es el tope);
    - aprieta 4 pernos M6x50.
-3. Pasa la barra por ambos soportes. Arma cada lado de adentro hacia afuera:
-   **tuerca M12 + golilla, contra el soporte → separador_eje → golilla → rueda → golilla → tuerca autoblocante M12**.
-   Ajusta hasta que la rueda gire libre y sin juego lateral.
-   - El `collarin_eje` es un respaldo opcional entre separador y soporte.
-4. Comprueba que las ruedas originales queden en el aire (~5 cm) y que las nuevas no rocen con nada. Si alguna roza, cambia `SEPARADOR_TRASERO` y vuelve a imprimir los separadores.
+3. Atornilla cada pletina en la cara **interior** del soporte (hacia el centro del coche) con 2 pernos M8x70 y tuercas autoblocantes. La pletina queda apuntando hacia atrás y abajo.
+4. Corta el **eje Ø16** al largo de `docs/cortes_metal.md` y perfora Ø4 a 8 mm de cada punta. Pásalo por ambas pletinas y arma cada lado así:
+   **collarín – pletina – collarín → separador_eje → golilla → rueda → golilla → pasador R**.
+5. Revisa:
+   - las ruedas originales quedan ~5 cm en el aire;
+   - las ruedas nuevas no rozan la rueda original ni el freno;
+   - el eje queda horizontal (mídelo con nivel).
+   Si algo roza, ajusta `EJE_TRASERO_ATRAS` o `SEPARADOR_TRASERO` en `params.py`, regenera las piezas y vuelve a perforar.
 
 ### A2. Travesaño y horquilla delantera
 1. Corta el **tubo 20x20**, ponle los 2 `tapon_tubo_cuadrado` y pásalo por los 2 `soporte_travesano_delantero` (A + tapa).
@@ -38,7 +41,12 @@ En todas las abrazaderas de tubo:
    - si se desvía, suelta la tuerca del lado de la ranura, mueve el eje 1–2 mm y repite.
 8. Ata la **correa de muñeca** al manillar.
 
-**Volver al modo paseo:** quita las 2 tuercas M12 y las ruedas traseras, y saca la horquilla con los 2 M6x100. Si quieres, deja puestos los soportes, que no molestan.
+**Volver al modo paseo:**
+1. Saca los 2 pasadores R y las ruedas traseras.
+2. Saca el eje.
+3. Saca la horquilla, que sale con los 2 M6x100.
+
+Si quieres, deja puestos los soportes y los brazos: no molestan.
 
 ---
 
@@ -99,7 +107,7 @@ En todas las abrazaderas de tubo:
 
 ### C3. Uso
 1. Ajusta las cintas superiores hasta que el respaldo quede reclinado unos 30°.
-2. Sienta a la niña en el sillín, mirando hacia el coche, con la espalda en la lona. Abrocha el cinturón.
+2. Sienta a la niña en el sillín **mirando hacia ti** (hacia atrás), con la espalda y la cabeza apoyadas en la lona. Abrocha el cinturón.
 3. Camina a paso normal. **No trotes con la hamaca puesta.**
 
 ---
